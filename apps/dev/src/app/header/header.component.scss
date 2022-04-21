@@ -1,0 +1,61 @@
+@mixin header-component-theme($blue-color-pallete, $cool-gray-color-pallete){
+    developers-header{
+       
+        a, a:hover {
+            color: map-get($blue-color-pallete, 700);
+        }
+        .icon:hover{
+            color: map-get($cool-gray-color-pallete, 200)
+        }
+    }
+}
+
+::root{
+    --spacing-half-x: 0.4rem;
+    --spacing-one-x: 0.8rem;
+    --spacing-one-and-a-half-x: 1.2rem;
+    --spacing-two-x: 1.6rem;
+    --spacing-three-x: 2.4rem;
+    --spacing-four-x: 3.2rem;
+    --spacing-six-x: 4.8rem;
+    --spacing-eight-x: 6.4rem;
+    --spacing-twelve-x: 9.6rem;
+    --spacing-sixteen-x: 12.8rem;
+    --spacing-twenty-four-x: 19.2rem;
+    --spacing-thirty-two-x: 25.6rem;
+    --font-size-xsmall: 1.2rem;
+    --font-size-small: 1.4rem;
+    --font-size-medium: 1.6rem;
+    --font-size-large: 2rem;
+    --font-size-xlarge: 2.4rem;
+    --font-size-display-small: 2.4rem;
+    --font-size-display-medium: 3.2rem;
+    --font-size-display-large: 4.8rem;
+    --font-size-display-xlarge: 6.4rem;
+    --font-weight-regular: 400;
+    --font-weight-bold: 600;
+    --line-height-default: 1.25;
+    --line-height-open: 1.5;
+    --paragraph-spacing: 1.2rem;
+}
+
+$color-background-container:#fff;
+
+
+a {
+    font-weight: var(--font-weight-bold);
+}
+.global-nav{
+    min-width: 200px;
+    padding: 0px  var(--spacing-one-and-a-half-x);
+    background-color: $color-background-container;
+    top:0;
+    width:100vw;
+    z-index:100;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+.global-nav__logo {
+    color: var(--color-brand);
+   // height: 3.4rem;
+   // width: 3.4rem;
+}

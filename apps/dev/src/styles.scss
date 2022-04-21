@@ -1,1 +1,58 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import "~@angular/material/theming";
+@import "./app/app.theme.scss";
+@import "./app/login.theme.scss";
+@import "./app/header/header.component.scss";
+
+@import "./app/footer/footer.theme.scss";
+// @import "./app-party/auth/components/login-form/login-form.theme.scss";
+
+$white-color-pallete: $white-pallete;
+$blue-color-pallete:$blue-pallete;
+$cool-gray-color-pallete: $cool-gray-pallete;
+$black-color-pallete:$black-pallete;
+$warm-gray-color-pallete: $warm-gray-pallete;
+$warm-red-color-pallete: $warm-red-pallete;
+$teal-color-pallete: $teal-pallete;
+$purple-color-pallete: $purple-pallete;
+$system-red-color-pallete:$system-red-pallete;
+$system-green-color-pallete:$system-green-pallete;
+$pink-color-pallete:$pink-pallete;
+$amber-color-pallete:$amber-pallete;
+$copper-color-pallete:$copper-pallete;
+$green-color-pallete:$green-pallete;
+$sage-color-pallete:$sage-pallete;
+$lime-color-pallete:$lime-pallete;
+$camo-color-pallete:$camo-pallete;
+$smoke-color-pallete:$smoke-pallete;
+$lavender-color-pallete:$lavender-pallete;
+$mauve-color-pallete:$mauve-pallete;
+$system-gray-color-pallete:$system-gray-pallete;
+$system-orange-color-pallete:$system-orange-pallete;
+$transparent-white: hsla(0,0%,100%,0);
+$transparent: transparent;
+$transparent-black: transparent;
+
+$custom-typography:mat-typography-config(
+    $font-family: 'Open Sans',
+);
+@include mat-core($custom-typography);
+
+$mat-theming-primary: mat-palette($white-color-pallete, 50);
+$mat-theming-accent: mat-palette($blue-color-pallete, A200, A100, A400);
+$mat-theming-warn: mat-palette($cool-gray-color-pallete,A700, A700);
+$mat-theming-theme-1: mat-light-theme($mat-theming-primary, $mat-theming-accent, $mat-theming-warn);
+@include angular-material-theme($mat-theming-theme-1);
+@include header-component-theme($blue-color-pallete, $black-color-pallete);
+
+html, body { height: 100%; background-color: map-get($warm-gray-color-pallete, 50);}
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.header-invisible {
+    max-height: 0;
+    transition: all 1000ms;
+}          
+.header-visible {
+    max-height: 100px;
+}

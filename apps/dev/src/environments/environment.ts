@@ -2,8 +2,17 @@
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+
+
 export const environment = {
   production: false,
+  client_id:"client_authorization_code",
+  secret:"client_authorization_code",
+  token_endpoint:"http://localhost:8080/oauth/token",
+  scope: "read",
+  enableTracing: true,
+  appearance: "fill",
+  floatLabel: 'auto'
 };
 
 /*

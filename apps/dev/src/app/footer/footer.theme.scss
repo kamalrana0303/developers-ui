@@ -1,0 +1,11 @@
+@mixin footer-theme($theme1, $theme2){
+    $background: map-get($theme2,accent);
+    $color: map-get($theme2, primary );
+    developers-footer{
+        .fixed-footer{
+            background-color: map-get($background, 500);
+            color: map-get($color, A400);
+            padding: 0px 16px;
+        }
+    }
+}

@@ -1,0 +1,22 @@
+@mixin custom-mat-form-field-outline-border($mat-theming-theme) {
+    $color: map-get($mat-theming-theme, primary);
+    $invalid-color: map-get($mat-theming-theme, warn);
+    developers-login{
+        .mat-form-field-appearance-outline .mat-form-field-outline-thick {
+            opacity: 0.5;
+            color: mat-color($color, A800);
+            background-color: mat-color($color, A100);
+            border-radius: 10px
+        }
+        input{
+            color: mat-color($color) !important;
+            border-radius: 10px;
+        }
+        input::placeholder{
+            color:mat-color($color) !important;
+        }
+        .mat-form-field-appearance-outline.mat-form-field-invalid.mat-form-field-invalid .mat-form-field-outline-thick {
+            color: mat-color($invalid-color, A800) !important;
+        }
+    }
+}

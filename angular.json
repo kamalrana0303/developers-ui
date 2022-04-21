@@ -1,7 +1,12 @@
 {
   "version": 2,
   "projects": {
+    "auth-auth-page": "libs/auth/auth-page",
+    "auth-data-access": "libs/auth/data-access",
     "dev": "apps/dev",
-    "dev-e2e": "apps/dev-e2e"
+    "dev-e2e": "apps/dev-e2e",
+    "directives": "libs/directives",
+    "profile-data-access": "libs/profile/data-access",
+    "profile-page": "libs/profile/page"
   }
 }

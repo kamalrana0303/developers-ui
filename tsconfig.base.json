@@ -14,7 +14,15 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@developers/auth/auth-page": ["libs/auth/auth-page/src/index.ts"],
+      "@developers/auth/data-access": ["libs/auth/data-access/src/index.ts"],
+      "@developers/directives": ["libs/directives/src/index.ts"],
+      "@developers/profile/data-access": [
+        "libs/profile/data-access/src/index.ts"
+      ],
+      "@developers/profile/page": ["libs/profile/page/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

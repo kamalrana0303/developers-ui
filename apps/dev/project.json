@@ -6,7 +6,9 @@
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/apps/dev",
         "index": "apps/dev/src/index.html",
@@ -14,8 +16,14 @@
         "polyfills": "apps/dev/src/polyfills.ts",
         "tsConfig": "apps/dev/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
-        "assets": ["apps/dev/src/favicon.ico", "apps/dev/src/assets"],
-        "styles": ["apps/dev/src/styles.scss"],
+        "assets": [
+          "apps/dev/src/favicon.ico",
+          "apps/dev/src/assets"
+        ],
+        "styles": [
+          "./node_modules/@angular/material/prebuilt-themes/pink-bluegrey.css",
+          "apps/dev/src/styles.scss"
+        ],
         "scripts": []
       },
       "configurations": {
@@ -72,12 +80,17 @@
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
-        "lintFilePatterns": ["apps/dev/src/**/*.ts", "apps/dev/src/**/*.html"]
+        "lintFilePatterns": [
+          "apps/dev/src/**/*.ts",
+          "apps/dev/src/**/*.html"
+        ]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/dev"],
+      "outputs": [
+        "coverage/apps/dev"
+      ],
       "options": {
         "jestConfig": "apps/dev/jest.config.js",
         "passWithNoTests": true

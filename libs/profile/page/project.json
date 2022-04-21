@@ -1,0 +1,26 @@
+{
+  "projectType": "library",
+  "root": "libs/profile/page",
+  "sourceRoot": "libs/profile/page/src",
+  "prefix": "developers",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/profile/page"],
+      "options": {
+        "jestConfig": "libs/profile/page/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/profile/page/src/**/*.ts",
+          "libs/profile/page/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

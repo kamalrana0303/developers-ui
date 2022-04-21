@@ -1,0 +1,25 @@
+<div fxLayout="row" fxLayoutAlign="center">
+    <div class="container-one" >
+        <div fxLayout="row" fxLayoutAlign="center">
+            <p>Sign in</p>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="center">
+            <p>Use Your Account</p>
+        </div>
+        <form  [formGroup]="loginForm" (ngSubmit)="submit()" fxLayout="column" >
+            
+            <mat-form-field fxFlex>
+                <input matInput type="text" formControlName="username" placeholder="Username" >
+                <mat-error *ngIf="loginForm.hasError('required',['username'])">username is required</mat-error>
+            </mat-form-field>
+           
+            <mat-form-field fxFlex >
+                <input matInput="password" formControlName="password"  placeholder="Password">
+                <mat-error *ngIf="loginForm.hasError('required', ['password'])">password is required</mat-error>
+            </mat-form-field >
+
+            <button type="submit" mat-raised-button color="primary" >Login</button>
+
+        </form>
+    </div>
+</div>
