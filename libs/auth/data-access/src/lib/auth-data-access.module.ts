@@ -11,6 +11,7 @@ import { MatDialogModule } from '@angular/material/dialog';
   imports: [
     CommonModule,
     MatDialogModule,
+    
     StoreModule.forFeature(Auth.AUTH_FEATURE, Auth.reducers),
     EffectsModule.forFeature([AuthEffects]),
   ],

@@ -1,0 +1,27 @@
+{
+  "projectType": "library",
+  "root": "libs/ui/styles",
+  "sourceRoot": "libs/ui/styles/src",
+  "prefix": "developers",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/ui/styles"],
+      "options": {
+        "jestConfig": "libs/ui/styles/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/ui/styles/src/**/*.ts",
+          "libs/ui/styles/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

@@ -1,1 +1,1 @@
-export * from './lib/auth-page.module'
+export * from './lib/auth-page.module';

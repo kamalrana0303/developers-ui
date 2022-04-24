@@ -9,6 +9,7 @@
       "outputs": [
         "{options.outputPath}"
       ],
+      
       "options": {
         "outputPath": "dist/apps/dev",
         "index": "apps/dev/src/index.html",
@@ -18,12 +19,20 @@
         "inlineStyleLanguage": "scss",
         "assets": [
           "apps/dev/src/favicon.ico",
-          "apps/dev/src/assets"
+          "apps/dev/src/assets",
+          {
+            "input": "libs/auth/auth-page/src/lib/assets",
+            "glob": "**.*",
+            "output": "assets"
+          }
         ],
         "styles": [
           "./node_modules/@angular/material/prebuilt-themes/pink-bluegrey.css",
           "apps/dev/src/styles.scss"
         ],
+        "stylePreprocessorOptions": {
+          "includePaths": ["libs/ui/styles/src/lib/styles"]
+        },
         "scripts": []
       },
       "configurations": {

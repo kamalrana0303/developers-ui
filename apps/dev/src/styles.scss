@@ -6,7 +6,8 @@
 @import "./app/header/header.component.scss";
 
 @import "./app/footer/footer.theme.scss";
-// @import "./app-party/auth/components/login-form/login-form.theme.scss";
+@import "_sharedTheming.scss";
+
 
 $white-color-pallete: $white-pallete;
 $blue-color-pallete:$blue-pallete;
@@ -45,6 +46,7 @@ $mat-theming-warn: mat-palette($cool-gray-color-pallete,A700, A700);
 $mat-theming-theme-1: mat-light-theme($mat-theming-primary, $mat-theming-accent, $mat-theming-warn);
 @include angular-material-theme($mat-theming-theme-1);
 @include header-component-theme($blue-color-pallete, $black-color-pallete);
+@include login-theming-theme();
 
 html, body { height: 100%; background-color: map-get($warm-gray-color-pallete, 50);}
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

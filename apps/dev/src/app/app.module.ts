@@ -24,7 +24,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ProfileDataAccessModule , ProfileConfiguration} from '@developers/profile/data-access';
 
-
 const libConfigModule=[
   ProfileDataAccessModule.forRoot(environment as ProfileConfiguration)
 ]

@@ -11,7 +11,7 @@ export const environment = {
   token_endpoint:"http://localhost:8080/oauth/token",
   scope: "read",
   enableTracing: true,
-  appearance: "fill",
+  appearance: "outline",
   floatLabel: 'auto'
 };
 

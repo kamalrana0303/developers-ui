@@ -1,7 +1,0 @@
-@mixin login-theming-theme($mat-theming-theme-2){
-    $accent: map-get($mat-theming-theme-2, accent);
-    .password{
-        color: map-get($accent, 500);
-    }
-
-}

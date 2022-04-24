@@ -8,7 +8,7 @@ export const routes:Routes=[
         path:"",component:MainComponent, children:[
            
           {
-              path:"",  loadChildren: ()=> import("@developers/auth/auth-page").then(m=> m.AuthPageModule)
+              path:"login",  loadChildren: ()=> import("@developers/auth/auth-page").then(m=> m.AuthPageModule)
           }
         ] 
         
@@ -24,7 +24,7 @@ export const routes:Routes=[
 ]
 
 @NgModule({
-    imports:[RouterModule.forRoot(routes, {useHash: true, enableTracing: environment.enableTracing})],
+    imports:[RouterModule.forRoot(routes, {useHash: false, enableTracing: environment.enableTracing})],
     exports:[RouterModule],
 })
 export class AppRoutingModule{

@@ -1,16 +1,12 @@
 import { TokenEntity } from "../auth.models";
 import { Action, createReducer, on } from "@ngrx/store";
 import * as AuthActions from "../auth.actions";
-import { state } from "@angular/animations";
-export const TOKEN_FEATURE_KEY='token'
+
+export const TOKEN_FEATURE_KEY='authToken'
 
 export interface State {
     token?: TokenEntity | null
-}
-
-export interface TokenPartialState{
-    readonly [TOKEN_FEATURE_KEY]: State;
-}                
+}             
 
 export const initialState:any={ token: null}
 
@@ -24,7 +20,6 @@ export function reducer(state: State | undefined, action : Action){
     return tokenReducer(state, action);
 }
 
-export const selectToken = (state:State) => state.token
 
 // export function update<T>(state: T, ...changes: Partial<T>[]): T{
 //     return changes.reduce((currentState: any, stateChange: any)=>({

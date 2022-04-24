@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
-import {Authenticate, login, selectError, selectPending, State, } from '@developers/auth/data-access'
+import { select, Store } from '@ngrx/store';
+import {Authenticate, login, selectError, selectPending, selectToken, State, } from '@developers/auth/data-access'
+import { map, tap } from 'rxjs/operators';
+
 
 @Component({
   selector: 'developers-login-page',
@@ -9,16 +11,18 @@ import {Authenticate, login, selectError, selectPending, State, } from '@develop
 })
 export class LoginPageComponent implements OnInit {
 
-  error$= this.store.select(selectError);
-  pending$ =this.store.select(selectPending);
+  error$= this.store.pipe(map((x:{auth: State})=> x?.auth)).pipe(select(selectError));
   
-  constructor(private store: Store<State>) { }
+  pending$ = null;//this.store.pipe(select(selectPending));
+  
+  constructor(private store: Store<{auth: State}>) { }
 
   ngOnInit(): void {
     
   }
 
   onLogin(credentials: Authenticate){
+    
    this.store.dispatch(login({authenticate: credentials}))
   }
 

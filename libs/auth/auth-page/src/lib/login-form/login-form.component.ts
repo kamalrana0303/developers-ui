@@ -1,10 +1,15 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Authenticate } from 'libs/auth/data-access/src/lib/authentication.model'; 
 import { environment } from 'apps/dev/src/environments/environment';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { Store } from '@ngrx/store';
-import {selectToken} from '@developers/auth/data-access';
+import { loginFailure, selectToken, State } from '@developers/auth/data-access';
+import { MatIconRegistry } from '@angular/material/icon';
+import { DomSanitizer } from '@angular/platform-browser';
+import { tap } from 'rxjs';
+import { CdkConnectedOverlay, ConnectedPosition } from '@angular/cdk/overlay';
+
 
 @Component({
   selector: 'developers-login-form',
@@ -15,9 +20,9 @@ import {selectToken} from '@developers/auth/data-access';
   ]
 })
 export class LoginFormComponent implements OnInit {
+
   appearance= environment.appearance;
   @Input() error: string | null=null;
-  username$=this.store.select(selectToken);
   @Input() set disabled(isDisabled: boolean){
     if(isDisabled){
       this.loginForm.disable();
@@ -32,17 +37,38 @@ export class LoginFormComponent implements OnInit {
     password: new  FormControl('', [Validators.required])
   });
 
-  constructor(private store: Store) { }
+  
+  constructor(private store: Store<State>, private domSanitizer: DomSanitizer, private matIconRegistry: MatIconRegistry) {
+    this.matIconRegistry.addSvgIcon(
+      "bird",
+      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/birds.svg")
+    )
+   }
 
   ngOnInit(): void {
     
-
+    
   }
 
   submit(){
     const value: Authenticate= this.loginForm.value
     if(this.loginForm.valid){
       this.submitted.emit(value);
+    }
+    else{
+      let error:string=""
+      if(this.loginForm.hasError('required', ['username'])){
+        error+="username is required"
+      }
+      if(this.loginForm.hasError('required', ['password'])){
+        if(error.length!=0){
+          error+=","
+        }
+        error+="password is required."
+      }
+
+      this.store.dispatch(loginFailure({error:error}))
+     
     }
   }
 
