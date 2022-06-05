@@ -6,6 +6,9 @@
     "dev": "apps/dev",
     "dev-e2e": "apps/dev-e2e",
     "directives": "libs/directives",
+    "models": "libs/models",
+    "oauth-auth-code": "libs/oauth/auth-code",
+    "oauth-data-access": "libs/oauth/data-access",
     "profile-data-access": "libs/profile/data-access",
     "profile-page": "libs/profile/page",
     "ui-styles": "libs/ui/styles"

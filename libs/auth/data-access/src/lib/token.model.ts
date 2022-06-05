@@ -4,5 +4,5 @@ export interface Token{
     "expires_in": number;
     "token_type":string;
     "scope":string,
-    'jti':string
+    'id_token':string
 }

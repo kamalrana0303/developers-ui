@@ -1,9 +1,13 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable, InjectionToken } from '@angular/core';
+import { AuthServiceItf } from '@developers/models';
 import { createEffect, Actions, ofType } from '@ngrx/effects';
 import { fetch } from '@nrwl/angular';
+import { map } from 'rxjs';
+import { ProfileService } from '../profile.service';
 
 import * as ProfilesActions from './profiles.actions';
 import * as ProfilesFeature from './profiles.reducer';
+
 
 @Injectable()
 export class ProfilesEffects {
@@ -12,16 +16,19 @@ export class ProfilesEffects {
       ofType(ProfilesActions.init),
       fetch({
         run: (action) => {
-          // Your custom service 'load' logic goes here. For now just return a success action...
-          return ProfilesActions.loadProfilesSuccess({ profiles: [] });
+      
+          return this.profileService.getUserProfile().pipe(map(res=> {
+          
+            return ProfilesActions.loadProfilesSuccess({profile: res.body});
+          }))
         },
         onError: (action, error) => {
-          console.error('Error', error);
+          
           return ProfilesActions.loadProfilesFailure({ error });
         },
       })
     )
   );
 
-  constructor(private readonly actions$: Actions) {}
+  constructor(private readonly actions$: Actions, private profileService: ProfileService) {}
 }

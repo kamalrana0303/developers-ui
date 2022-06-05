@@ -1,0 +1,26 @@
+{
+  "projectType": "library",
+  "root": "libs/oauth/auth-code",
+  "sourceRoot": "libs/oauth/auth-code/src",
+  "prefix": "developers",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/oauth/auth-code"],
+      "options": {
+        "jestConfig": "libs/oauth/auth-code/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/oauth/auth-code/src/**/*.ts",
+          "libs/oauth/auth-code/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

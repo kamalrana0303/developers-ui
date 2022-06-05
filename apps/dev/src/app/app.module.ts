@@ -13,19 +13,28 @@ import { DirectivesModule } from '@developers/directives';
 import { FooterComponent } from './footer/footer.component';
 import { A11yModule } from '@angular/cdk/a11y';
 import { OverlayModule } from '@angular/cdk/overlay';
-import { StoreModule } from '@ngrx/store';
-import { EffectsModule } from '@ngrx/effects';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+
 import { environment } from '../environments/environment';
 import { MainComponent } from './main/main.component';
 import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { ProfileDataAccessModule , ProfileConfiguration} from '@developers/profile/data-access';
+import { DataAccessModule } from './data-access/data-access.module';
+import { BucketComponent } from './bucket/bucket.component';
+import { ProfileDataAccessModule } from '@developers/profile/data-access';
+import { AuthService } from './data-access/auth.service';
+import { ConfigurationModel } from '@developers/models';
+import { ProfilePageModule } from '@developers/profile/page';
+
 
 const libConfigModule=[
-  ProfileDataAccessModule.forRoot(environment as ProfileConfiguration)
+  ProfilePageModule.forRoot(environment as any),
+  ProfileDataAccessModule.forRoot(environment as any)
+  // AuthDataAccessModule.forRoot(environment as any),
+  // OauthDataAccessModule.forRoot(environment as any),
+  // OauthAuthCodeModule.forRoot(environment as any),
+  // AuthPageModule.forRoot(environment as any)
 ]
 
 const material: any[]=[
@@ -47,7 +56,8 @@ const material: any[]=[
     HeaderComponent,
     FooterComponent,
     MainComponent,
-    HeaderComponent
+    HeaderComponent,
+    BucketComponent
   ],
   imports: [
     BrowserModule,
@@ -55,17 +65,20 @@ const material: any[]=[
     BrowserAnimationsModule,
     HttpClientModule,
     DirectivesModule,
-    libConfigModule,
+    DataAccessModule,
     material,
-    StoreDevtoolsModule.instrument({
-      name: 'NgRx Authentication',
-      logOnly: environment.production,
-    }),
-    StoreModule.forRoot({}),
-    EffectsModule.forRoot([]),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+    libConfigModule
   ],
-  bootstrap: [AppComponent]
+  
+  bootstrap: [AppComponent],
+  providers:[
+    { provide: 'authService', useFactory: getAuthServiceFactory, deps: [AuthService]},
+    
+  ]
  
 })
 export class AppModule {}
+
+export function getAuthServiceFactory(authService: AuthService): AuthService{
+  return authService;
+}

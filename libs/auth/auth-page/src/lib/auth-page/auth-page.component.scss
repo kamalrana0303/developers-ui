@@ -1,0 +1,31 @@
+$full-width: 100%;
+
+.full-width{
+    width: $full-width;
+}
+.heading{
+    width: $full-width;
+    text-align: center;
+    h1{
+        padding: 16px;
+    }
+}
+.description-view-box{
+    width: $full-width;
+    min-width: 300px;
+    padding: 20px 15px;
+    font-weight: bolder !important;
+}
+
+.view-box{
+    width: $full-width;
+    min-width: 300px;
+    
+}
+
+mat-card.mat-card{
+    background: linear-gradient(129deg,rgba(242,47,70,.85),rgba(0,140,255,.85)),url(../assets/bg.png) 50% 50% no-repeat;
+    background-size: cover;
+    padding-top: 0;
+}
+

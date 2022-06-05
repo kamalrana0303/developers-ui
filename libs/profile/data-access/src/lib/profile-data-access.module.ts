@@ -4,12 +4,15 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import * as fromProfiles from './+state/profiles.reducer';
 import { ProfilesEffects } from './+state/profiles.effects';
-import { ProfileConfiguration } from './configurations';
+import { ConfigurationModel } from '@developers/models';
+import { CookieService } from 'ngx-cookie-service';
+
 
 
 @NgModule({
   imports: [
     CommonModule,
+   
     StoreModule.forFeature(
       fromProfiles.PROFILES_FEATURE_KEY,
       fromProfiles.reducer
@@ -20,13 +23,14 @@ import { ProfileConfiguration } from './configurations';
       fromProfiles.reducer
     ),
   ],
+  providers: [CookieService]
 })
 export class ProfileDataAccessModule {
-  public static forRoot(config:ProfileConfiguration): ModuleWithProviders<ProfileDataAccessModule>{
+  public static forRoot(config:ConfigurationModel): ModuleWithProviders<ProfileDataAccessModule>{
     return {
       ngModule: ProfileDataAccessModule,
       providers: [{
-        provide: ProfileConfiguration, useValue: config
+        provide: 'config', useValue: config
       }]
     }
   }

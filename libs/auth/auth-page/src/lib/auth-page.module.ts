@@ -1,8 +1,8 @@
-import { NgModule } from '@angular/core';
+import { ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LoginFormComponent } from './login-form/login-form.component';
+import { LoginFormComponent } from './login/login-form/login-form.component';
 import { AuthDataAccessModule } from '@developers/auth/data-access';
-import { LoginPageComponent } from './login-page/login-page.component';
+import { LoginPageComponent } from './login/login-page/login-page.component';
 import { RouterModule } from '@angular/router';
 import {  ReactiveFormsModule } from '@angular/forms';
 import {MatCardModule} from '@angular/material/card';
@@ -12,6 +12,15 @@ import {MatInputModule} from "@angular/material/input";
 import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from '@angular/material/icon';
 import {MatDividerModule} from "@angular/material/divider";
+import { MatListModule } from "@angular/material/list";
+import {MatTabsModule} from '@angular/material/tabs';
+import { AuthPageComponent } from './auth-page/auth-page.component';
+import { PortalBridgeService } from './portal-bridge.service';
+import { A11yModule } from '@angular/cdk/a11y';
+import { OverlayModule } from '@angular/cdk/overlay';
+import { PortalModule } from '@angular/cdk/portal';
+import { DividerModule } from './utils/divider/divider.module';
+import { AuthPageConfigurations } from './auth-page.config';
 
 const material=[
   MatCardModule,
@@ -20,7 +29,12 @@ const material=[
   MatButtonModule,
   MatInputModule,
   MatIconModule,
-  MatDividerModule
+  MatListModule,
+  MatDividerModule,
+  A11yModule,
+  OverlayModule,
+  PortalModule,
+  MatTabsModule
 ]
 
 @NgModule({
@@ -29,10 +43,26 @@ const material=[
     ReactiveFormsModule,
     material,
     RouterModule.forChild([
-      {path:'', component: LoginPageComponent}
+      {
+        path:"", component: AuthPageComponent, children: [
+          {path:'login', loadChildren: ()=>import("./login/login.module").then(m=> m.LoginModule)},
+          {path:'sign-up', loadChildren: ()=> import("./signup/signup.module").then(m=> m.SignupModule)}
+        ]
+      }
     ]),
-    AuthDataAccessModule
+    AuthDataAccessModule,
+    DividerModule
   ],
-  declarations: [ LoginPageComponent, LoginFormComponent]
+  declarations: [ AuthPageComponent],
+  providers: [PortalBridgeService]
 })
-export class AuthPageModule {}
+export class AuthPageModule {
+  public static forRoot(config:AuthPageConfigurations): ModuleWithProviders<AuthPageModule>{
+    return {
+      ngModule: AuthDataAccessModule,
+      providers: [{
+        provide: AuthPageConfigurations, useValue: config
+      }]
+    }
+  }
+}

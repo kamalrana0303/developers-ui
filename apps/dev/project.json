@@ -6,10 +6,7 @@
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
-      "outputs": [
-        "{options.outputPath}"
-      ],
-      
+      "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/apps/dev",
         "index": "apps/dev/src/index.html",
@@ -89,17 +86,12 @@
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
-        "lintFilePatterns": [
-          "apps/dev/src/**/*.ts",
-          "apps/dev/src/**/*.html"
-        ]
+        "lintFilePatterns": ["apps/dev/src/**/*.ts", "apps/dev/src/**/*.html"]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": [
-        "coverage/apps/dev"
-      ],
+      "outputs": ["coverage/apps/dev"],
       "options": {
         "jestConfig": "apps/dev/jest.config.js",
         "passWithNoTests": true

@@ -1,0 +1,14 @@
+<form class="material-form"  [formGroup]="loginForm" (ngSubmit)="submit()" >
+    <div fxLayout="column" class="view-box" >
+        <mat-form-field color="amber" fxFlex>
+            <input matInput type="text" formControlName="username" placeholder="Username" >
+            <mat-error *ngIf="loginForm.hasError('required',['username'])">username is required</mat-error>
+        </mat-form-field>
+       
+        <mat-form-field color="amber" fxFlex >
+            <input type="password" matInput="password" formControlName="password"  placeholder="Password">
+            <mat-error *ngIf="loginForm.hasError('required', ['password'])">password is required</mat-error>
+        </mat-form-field >
+        <button type="submit" mat-flat-button  color="amber">Login</button>
+    </div>
+</form>

@@ -1,0 +1,24 @@
+
+<mat-card>
+    <div class="heading">
+        <h1>Welcome To Leaf</h1>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="center">
+        <div fxLayout="row" fxLayoutAlign="start stretch" >
+            <div fxFlex fxLayout="column" fxLayoutAlign="start start"  class="description-view-box">
+                <ng-template [cdkPortalOutlet]="titlePortal$ |async">
+                </ng-template>
+            </div>
+
+            <div fxFlex fxLayout="column">
+                <router-outlet></router-outlet>
+                <div fxLayout="row" fxLayoutAlign="start stretch">
+                    <div class="view-box" fxLayout="column" fxLayoutAlign="center center">
+                        <ng-template [cdkPortalOutlet]="actionButtonPortal$ | async">
+                        </ng-template>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</mat-card>

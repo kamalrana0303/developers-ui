@@ -1,5 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'apps/dev/src/environments/environment';
 import { Observable, of } from 'rxjs';
 
 import { Authenticate } from './authentication.model';
@@ -45,7 +46,8 @@ export class AuthenticationService {
     params.append("username",user.username);
     params.append('password',user.password);
     let x= params.toString();
-    return this.http.post<Token>("http://localhost:8080/oauth/token?"+params.toString(), null,{ headers:{"Authorization": `Basic ${btoa("client3:secret3")}`}});
+  // return   this.http.get<Token>("http://localhost:8080/login", {headers: {"username": user.username, "password": user.password}})
+   return this.http.post<Token>("http://localhost:8080/oauth/token?"+params.toString(), null,{ headers:{"Authorization": `Basic ${btoa("client3:secret3")}`}});
   }
 
 }

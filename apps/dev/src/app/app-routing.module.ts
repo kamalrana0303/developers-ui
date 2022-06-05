@@ -2,24 +2,21 @@ import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { MainComponent } from "./main/main.component";
 import { environment } from "../environments/environment";
-import { ProfilePageModule } from "@developers/profile/page";
+import { BucketComponent } from "./bucket/bucket.component";
+import { AuthGuardGuard } from "./guard/auth-guard.guard";
 export const routes:Routes=[ 
     {
-        path:"",component:MainComponent, children:[
-           
-          {
-              path:"login",  loadChildren: ()=> import("@developers/auth/auth-page").then(m=> m.AuthPageModule)
-          }
+        path:"_",component:MainComponent,canActivate: [AuthGuardGuard] , children:[           
+         
         ] 
-        
     },
-  
     {
-        path: 'profile', loadChildren: ()=> import("@developers/profile/page").then(m=>ProfilePageModule)
+        path:"token", component: BucketComponent
+    },
+    {
+        path:"test", loadChildren: ()=>import("@developers/profile/page").then(m=> m.ProfilePageModule)
     }
-    // {
-    //     path: '**'
-    // }
+
     
 ]
 

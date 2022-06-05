@@ -17,6 +17,6 @@ export class AppComponent {
   
   title = 'dev';
   ngOnInit(){
-    
+
   }
 }

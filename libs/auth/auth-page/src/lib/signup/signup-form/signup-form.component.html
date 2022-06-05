@@ -1,0 +1,25 @@
+<form class="material-form" [formGroup] = "form" >
+    <div fxLayout="column" fxLayoutAlign="start center" class="view-box">
+        <mat-form-field color="amber" fxFlex="100" class="full-width">
+            <input placeholder="Username" matInput formControlName="username" [(ngModel)]="signupRM.username" type="text">
+            <mat-error *ngIf="pF.hasError('required', ['username'])">{{error.username[0]}}</mat-error>
+        </mat-form-field>
+        <mat-form-field color="amber" fxFlex="100" class="full-width">
+            <input placeholder="OTP" matInput formControlName="otp" type="otp" [(ngModel)]="signupRM.otp">
+            <mat-error *ngIf="pF.hasError('required',['otp'])">{{error.otp[0]}}</mat-error>
+        </mat-form-field>
+        <div fxLayout="column" formGroupName="password_pair" fxFlex="100" class="full-width">
+            <mat-form-field color="amber" fxFlex="100" class="full-width">
+                <input (click)="onPasswordFocussed()" placeholder="Password" matInput formControlName="password" [type]="visibility? 'text': 'password'" [(ngModel)]="signupRM.password">
+                <mat-icon matSuffix  color="amber" (click)="visibility=!visibility">{{visibility? 'visibility_on':'visibility_off'}}</mat-icon>
+                <mat-error *ngIf="cF.hasError('required',['password'])">{{error.password[0]}}</mat-error>
+            </mat-form-field>
+            <mat-form-field color="amber" fxFlex="100" class="full-width">
+                <input placeholder="Confirm Password" matInput formControlName="confirm_password" type="password">
+                <mat-error *ngIf="cF.hasError('required', ['confirm_password'])">{{error.confirm_password[0]}}</mat-error>
+                <mat-error *ngIf="cF.hasError('confirmedValidator', ['confirm_password'])"  > {{error.confirm_password[1]}}</mat-error>
+            </mat-form-field>
+        </div>
+        <button fxFlex mat-flat-button color="amber" class="full-width" (click)="submit()">Signup</button>
+    </div>
+</form>

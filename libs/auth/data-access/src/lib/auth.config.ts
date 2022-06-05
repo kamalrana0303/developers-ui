@@ -1,5 +1,11 @@
 export class AuthConfigurations{
-   
+    private _client_base_url: string;
+    public get clientBaseUrl():string{
+        return this._client_base_url;
+    }
+    public set clientBaseUrl(client_base_url:string){
+        this._client_base_url=client_base_url;
+    }
     private _baseUrl: string;
     public get baseUrl(): string {
         return this._baseUrl;
@@ -17,10 +23,10 @@ export class AuthConfigurations{
     }
 
     private _client_id: string;
-    public get client_id(): string {
+    public get clientId(): string {
         return this._client_id;
     }
-    public set client_id(value: string) {
+    public set clientId(value: string) {
         this._client_id = value;
     }
 
@@ -33,10 +39,10 @@ export class AuthConfigurations{
     }
 
     private _token_endpoint: string;
-    public get token_endpoint(): string {
+    public get tokenEndpoint(): string {
         return this._token_endpoint;
     }
-    public set token_endpoint(value: string) {
+    public set tokenEndpoint(value: string) {
         this._token_endpoint = value;
     }
 
@@ -72,6 +78,14 @@ export class AuthConfigurations{
         this._floatLabel = value;
     }
 
+    private _grant_type:string
+    public get grantType(): string {
+        return this._grant_type;
+    }
+    public set grantType(value: string) {
+        this._grant_type = value;
+    }
+
     constructor(){
         this._baseUrl=""
         this._appearance='fill';
@@ -82,5 +96,7 @@ export class AuthConfigurations{
         this._token_endpoint="";
         this._enableTracing=false;
         this._floatLabel='auto';
+        this._client_base_url='';
+        this._grant_type='';
     }
 }

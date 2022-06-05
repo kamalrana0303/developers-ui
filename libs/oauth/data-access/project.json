@@ -1,0 +1,26 @@
+{
+  "projectType": "library",
+  "root": "libs/oauth/data-access",
+  "sourceRoot": "libs/oauth/data-access/src",
+  "prefix": "developers",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/oauth/data-access"],
+      "options": {
+        "jestConfig": "libs/oauth/data-access/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/oauth/data-access/src/**/*.ts",
+          "libs/oauth/data-access/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}
