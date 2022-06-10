@@ -1,7 +1,14 @@
 import { Inject, Injectable } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { catchError, exhaustMap, map, of } from 'rxjs';
-import { bucketAction, loginAction, pkceAction } from './action';
+import { catchError, exhaustMap, map, of, tap } from 'rxjs';
+import { environment } from '../../environments/environment';
+import { LogoutPromptComponent } from '../logout-prompt/logout-prompt.component';
+import { bucketAction, loginAction, pkceAction, tokenAction } from './action';
+import {  loginStatus, loginSuccess } from './action/login.actions';
+import * as logoutAction from './action/logout.action';
+import { tokenError } from './action/token.action';
 import { Code } from './app-data.model';
 import { AuthService } from './auth.service';
 import { generateCodeChallegeFromVerifier, generateCodeVerifier } from './utils/crypto.utils';
@@ -9,7 +16,19 @@ import { generateCodeChallegeFromVerifier, generateCodeVerifier } from './utils/
 @Injectable()
 export class AuthEffects {
 
-  constructor(private actions$: Actions, @Inject('authService') private authService: AuthService) {}
+  constructor(private actions$: Actions, @Inject('authService') private authService: AuthService, private router: Router, private dialogService: MatDialog) {}
+
+  checkToken$= createEffect(()=> this.actions$.pipe(
+    ofType(loginAction.checkToken),
+    exhaustMap(()=> {
+      return this.authService.checkToken().then(isToken=> {
+        if(isToken){
+          return loginSuccess()
+        }
+        return loginStatus({loggedIn: false})
+      }
+    )}
+  )));
 
   initLogin$= createEffect(()=> this.actions$.pipe(
     ofType(loginAction.initLogin),
@@ -22,8 +41,6 @@ export class AuthEffects {
       })
     })
   ))
-
-
 
   loadPKCE$= createEffect(()=> this.actions$.pipe(
     ofType(pkceAction.loadPKCE),
@@ -57,9 +74,15 @@ export class AuthEffects {
       exhaustMap((code:Code)=>{
         
         return this.authService.getToken(code.value).pipe(map(token=>{
-          alert(JSON.stringify(token))
-          if(token.access_token!=null){
-            this.authService.storeAccessToken(token)
+          if(environment.scope == 'openid'){
+            if(token.id_token!=null){
+              this.authService.storeAccessToken(token)
+            }
+          }
+          else{
+            if(token.access_token!=null){
+              this.authService.storeAccessToken(token)
+            }
           }
           return bucketAction.successfullToken();
         }),  catchError(error=> of(bucketAction.failureToken(error))))
@@ -67,6 +90,92 @@ export class AuthEffects {
     )
   })
 
+  refreshToken$ = createEffect(()=> this.actions$.pipe(
+    ofType(tokenAction.tokenExpired),
+    exhaustMap(()=> {
+      return this.authService.refreshToken().pipe(map( token => {
+        if(environment.scope == 'openid'){
+          if(token.id_token!=null){
+            this.authService.storeAccessToken(token)
+          }
+        }
+        else{
+          if(token.access_token!=null){
+            this.authService.storeAccessToken(token)
+          }
+        }
+        return tokenAction.tokenRefreshed();
+      }), catchError(error => of(tokenAction.tokenError(error))))
+    })
+  ))
 
+  loadTokenSuccessFully$= createEffect(()=> {
+    return this.actions$.pipe(
+      ofType(bucketAction.successfullToken),
+      exhaustMap(()=> {
+        return of(loginAction.loginSuccess())
+      })
+    )
+  })
+
+  loginSuccess$= createEffect(()=> {
+    return this.actions$.pipe(
+      ofType(loginAction.loginSuccess),
+      exhaustMap(()=> {
+        return of(loginAction.loginStatus({loggedIn: true}));
+      })
+    )
+  })
+
+  navigatOnLogin = createEffect(()=> {
+    return this.actions$.pipe(
+      ofType(loginAction.loginStatus),
+      tap((loggedinStatus)=> {
+        if(loggedinStatus.loggedIn){
+          this.router.navigate(["auth/profile"])
+        }
+      })
+    )
+  },{ dispatch: false})
+
+  navigateOnLogout$= createEffect(()=> {
+    return this.actions$.pipe(
+      ofType(logoutAction.loggedOutConfirmed),
+      tap(()=> {
+        
+        this.router.navigate([""])
+      })
+    )
+  }, {dispatch:false})
+
+  loggedOut$= createEffect(()=> this.actions$.pipe(
+    ofType(logoutAction.loggedOut),
+    exhaustMap(()=> {
+      return this.dialogService.open(LogoutPromptComponent)
+      .afterClosed()
+      .pipe(
+        map(confirmed=> {
+          if(confirmed){
+            return logoutAction.loggedOutConfirmed()
+          }
+          else{
+            return logoutAction.loggedOutCancelled()
+          }
+        })
+      )
+    })
+  ))
+
+  logoutConfirmation$= createEffect(()=>  this.actions$.pipe(
+     ofType(logoutAction.loggedOutConfirmed),
+     exhaustMap(()=> {
+      return this.authService.loggeOut().pipe(map(x=> {
+        if(x){
+          return loginAction.loginStatus({loggedIn: false})
+        }
+        return loginStatus({loggedIn: true})
+      }))
+     })
+  ))
   //fail to load pkce
 }

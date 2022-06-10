@@ -1,0 +1,55 @@
+<section class="layout-margin">
+    
+   <developers-profile-info-heading></developers-profile-info-heading>
+    
+    <mat-card>
+        <mat-card-title>
+            Basic Info
+        </mat-card-title>
+        <mat-card-content>
+            <mat-nav-list dense>
+                <mat-list-item >
+                    <div fxLayout="row" fxLayoutAlign="space-between start" class="item">
+                        <h5 matLine >EMAIL</h5>
+                        <p matLine >{{(personalInfo$ | async)?.email}}</p>
+                        <div>
+
+                        </div>
+                    </div>
+                </mat-list-item>
+                <mat-divider [inset]="true"></mat-divider>
+                <mat-list-item >
+                    <div fxLayout="row" fxLayoutAlign="space-between space-between" class="item">
+                        <h5 matLine> USERNAME </h5>
+                        <p>{{(personalInfo$ | async)?.username}}</p>
+                        <div fxLayout="row" fxLayoutAlign="end start">
+                            <a routerLink=""><mat-icon>info</mat-icon></a>
+                        </div>
+                    </div>
+                </mat-list-item>
+                <mat-divider [inset]="true"t></mat-divider>
+                <mat-list-item >
+                    <div fxLayout="row" fxLayoutAlign="space-between space-between" class="item">
+                        <h5 matLine> DOB </h5>
+                        <p>{{(personalInfo$ | async)?.dob}}</p>
+                        <div fxLayout="row" fxLayoutAlign="end start">
+                            <a routerLink=""><mat-icon>info</mat-icon></a>
+                        </div>
+                    </div>
+                </mat-list-item>
+                <mat-divider [inset]="true"t></mat-divider>
+                <mat-list-item >
+                    <div fxLayout="row" fxLayoutAlign="space-between space-between" class="item">
+                        <h5 matLine> GENDER </h5>
+                        <p>{{(personalInfo$ | async)?.gender}}</p>
+                        <div fxLayout="row" fxLayoutAlign="end start">
+                            <a routerLink=""><mat-icon>info</mat-icon></a>
+                        </div>
+                    </div>
+                </mat-list-item>
+                <mat-divider [inset]="true"t></mat-divider>
+            </mat-nav-list>
+        </mat-card-content>
+       
+    </mat-card>
+</section>

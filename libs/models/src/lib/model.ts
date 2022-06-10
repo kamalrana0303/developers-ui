@@ -1,13 +1,33 @@
+import { HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs";
 
 export interface AuthServiceItf{
     getToken(code: string):Observable<Token>;
+    refreshToken():Observable<Token>;
     storeAccessToken(token:Token):void;
     checkToken():Promise<boolean>;
     getTokenFromSessionStorage():Promise<any>;
-    getTokenFromSessionStorage2():string | null
+    getTokenFromSessionStorage2():any
 }
 
+
+export interface Token{
+  "access_token": any;
+  "id_token":any;
+  "refresh_token":any;
+}
+
+export interface error{
+  value: any
+}
+
+export interface Code{
+  value: any
+}
+
+export interface HeaderServiceItf{
+ authHeader(): {headers: HttpHeaders | {[header: string]: string | string[]}}
+}
 export interface Code{
   value: any
 }
@@ -17,7 +37,13 @@ export interface error{
 }
 
 export interface Error<T>{
-  value: T
+  status: number;
+  statusTest: string;
+  url: string;
+  name: string;
+  message: string;
+  error: T;
+  headers: any
 }
 
 export interface ResponseBody<T>{
@@ -33,5 +59,9 @@ export interface Token{
 export interface Profile{
   username: string;
   email: string;
-  userId: string;
+  cpId: string;
+  gender: string;
+  billingAddresses: []
+  dob: null
+  shippingAddresses: []
 }

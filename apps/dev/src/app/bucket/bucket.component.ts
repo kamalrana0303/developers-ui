@@ -19,5 +19,4 @@ export class BucketComponent implements OnInit {
     let code=this.activatedRoute.snapshot.queryParamMap.get("code");
     this.store.dispatch(bucketAction.loadToken({"value": code}))
   }
-
 }

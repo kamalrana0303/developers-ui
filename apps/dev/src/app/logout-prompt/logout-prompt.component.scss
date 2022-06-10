@@ -1,0 +1,14 @@
+:host{
+    display: block;
+    width: 100%;
+    max-width: 300px;
+    font-size: 2vh;
+}
+mat-dialog-actions{
+    display: flex;
+    justify-content: flex-end;
+}
+[mat-stroked-button]{
+    padding: 0
+}
+

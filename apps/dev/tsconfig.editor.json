@@ -1,6 +1,6 @@
 {
   "extends": "./tsconfig.json",
-  "include": ["**/*.ts"],
+  "include": ["**/*.ts", "../../libs/profile/data-access/src/lib/header.interceptor.ts"],
   "compilerOptions": {
     "types": ["jest", "node"]
   }

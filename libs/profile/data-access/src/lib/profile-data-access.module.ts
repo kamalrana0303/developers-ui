@@ -2,26 +2,20 @@ import { ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import * as fromProfiles from './+state/profiles.reducer';
+import * as fromProfiles from './+state/reducers/index';
 import { ProfilesEffects } from './+state/profiles.effects';
-import { ConfigurationModel } from '@developers/models';
+import { ConfigurationModel, ModelsModule } from '@developers/models';
 import { CookieService } from 'ngx-cookie-service';
-
-
 
 @NgModule({
   imports: [
     CommonModule,
-   
+  
     StoreModule.forFeature(
-      fromProfiles.PROFILES_FEATURE_KEY,
-      fromProfiles.reducer
+      fromProfiles.FEATURE,
+      fromProfiles.reducers
     ),
-    EffectsModule.forFeature([ProfilesEffects]),
-    StoreModule.forFeature(
-      fromProfiles.PROFILES_FEATURE_KEY,
-      fromProfiles.reducer
-    ),
+    EffectsModule.forFeature([ProfilesEffects])
   ],
   providers: [CookieService]
 })

@@ -1,0 +1,39 @@
+@media only screen and (max-width: 720px){
+    .res-image{
+        height: 60px;
+        background: url("../../assets/profile_spot_visible_128x128_3d54fe9136457d65321e6fbf2f18be96.png") no-repeat;
+        background-size: contain;
+        float: right;
+       
+    }
+    .mobile::before{
+        content : 'Personal info and options to manage it. You can make some of this info, like your contact details, visible to others so they can reach you easily. You can also see a summary of your profiles.  ';
+    }
+    .desktop::before{
+        content: '';
+    }
+}
+@media (min-width: 720px){
+    .res-image{
+        background: url("../../assets/profile_scene_visible_720x256_ee5ae234eb96dc206b79c851f41a6f69.png") no-repeat;
+        background-size: contain;
+        height: 120px;
+    }
+    .desktop::before{
+        content: 'Personal info and options to manage it. You can make some of this info, like your contact details, visible to others so they can reach you easily. You can also see a summary of your profiles.';
+    }
+    .mobile::before{
+        content: '';
+    }
+}
+h3{
+    line-height: normal;
+    font-weight: bolder;
+}
+
+figure{
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 20px;
+    margin-inline-end: 20px;
+}

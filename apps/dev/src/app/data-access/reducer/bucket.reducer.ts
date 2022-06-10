@@ -1,5 +1,5 @@
 import {  Action, createReducer, on } from '@ngrx/store';
-import { bucketAction } from '../action';
+import { bucketAction, loginAction } from '../action';
 
 export const tokenFeatureKey = 'token';
 
@@ -16,7 +16,8 @@ export const initialState: State = {
 export const appDataReducer = createReducer(
   initialState,
   on(bucketAction.loadToken, (state, code)=> ({...state, code})),
-  on(bucketAction.failureToken, (state, error)=> ({...state, error}))
+  on(bucketAction.failureToken, (state, error)=> ({...state, error})),
+  on(loginAction.checkToken, (state, status)=> ({...state, ...status}))
 )
 
 export function reducer(state: State | undefined, action : Action){

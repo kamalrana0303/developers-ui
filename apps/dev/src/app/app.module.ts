@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HeaderComponent } from './header/header.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -26,6 +26,9 @@ import { ProfileDataAccessModule } from '@developers/profile/data-access';
 import { AuthService } from './data-access/auth.service';
 import { ConfigurationModel } from '@developers/models';
 import { ProfilePageModule } from '@developers/profile/page';
+import { HeaderService } from './header.service';
+import { LogoutPromptComponent } from './logout-prompt/logout-prompt.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 const libConfigModule=[
@@ -47,7 +50,8 @@ const material: any[]=[
   MatListModule,
   MatButtonModule,
   MatFormFieldModule,
-  MatInputModule
+  MatInputModule,
+  MatDialogModule
 ]
 
 @NgModule({
@@ -57,7 +61,8 @@ const material: any[]=[
     FooterComponent,
     MainComponent,
     HeaderComponent,
-    BucketComponent
+    BucketComponent,
+    LogoutPromptComponent
   ],
   imports: [
     BrowserModule,
@@ -73,7 +78,9 @@ const material: any[]=[
   bootstrap: [AppComponent],
   providers:[
     { provide: 'authService', useFactory: getAuthServiceFactory, deps: [AuthService]},
-    
+    {
+      provide: 'headerService', useFactory: headerFactory, deps: [HeaderService]
+    }
   ]
  
 })
@@ -81,4 +88,9 @@ export class AppModule {}
 
 export function getAuthServiceFactory(authService: AuthService): AuthService{
   return authService;
+}
+
+
+export function headerFactory(headerService: HeaderService){
+  return headerService
 }

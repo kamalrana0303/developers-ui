@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
+import { select, Store } from '@ngrx/store';
 import { Router } from '@angular/router';
 import { environment } from '../../environments/environment';
-import { loginAction } from '../data-access/action';
+import { loginAction, logoutAction } from '../data-access/action';
+import { selectLoggedInStatus } from '../data-access/reducer';
+import { map, tap } from 'rxjs';
 
 @Component({
   selector: 'developers-header',
@@ -11,17 +13,18 @@ import { loginAction } from '../data-access/action';
 })
 export class HeaderComponent implements OnInit {
   isOpen:boolean=true;
-  // $isLoggedIn=this.store.select(fromStore.selectIsLoggedIn).pipe(take(1));
+  isLoggedIn:boolean = false;
+  $isLoggedIn=this.store.pipe(select(selectLoggedInStatus)).pipe(tap(isLoggedIn=> this.isLoggedIn = isLoggedIn));
   constructor(private store: Store, private router: Router) { }
 
   ngOnInit(): void {
-    
+    this.store.dispatch(loginAction.checkToken())
   }
   routeToLogin(){
     this.router.navigate(['/auth']);
   }
 
-  goToLoginPage() {
+  onClick() {
     // const params = [
     //     'response_type=code',
     //     'client_id='+ environment.clientId,
@@ -30,7 +33,12 @@ export class HeaderComponent implements OnInit {
     // ];
    // window.location.href = 'http://localhost:8080/oauth/authorize?' + params.join('&');
 
-   this.store.dispatch(loginAction.initLogin());
+    if(this.isLoggedIn){
+        this.store.dispatch(logoutAction.loggedOut())
+    }
+    else{
+      this.store.dispatch(loginAction.initLogin())
+    }
   }
 
 }

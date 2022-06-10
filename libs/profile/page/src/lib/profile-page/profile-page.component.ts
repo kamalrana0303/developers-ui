@@ -13,7 +13,6 @@ export class ProfilePageComponent implements OnInit {
   constructor(private store: Store<State>, private cookieService: CookieService) { }
 
   ngOnInit(): void {
-    alert(JSON.stringify(this.cookieService.getAll()))
     this.store.dispatch(init());
   }
 

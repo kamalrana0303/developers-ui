@@ -1,0 +1,10 @@
+@mixin logout-prompt-theme($primary, $accent, $warn){
+
+    .mat-stroked-button.mat-primary{
+        background-color: map-get($primary, 900 );
+    }
+    .mat-stroked-button.mat-warn{
+        background-color: map-get($warn, 900);
+    }
+    
+}

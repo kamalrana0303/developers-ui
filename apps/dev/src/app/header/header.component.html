@@ -25,8 +25,8 @@
             </a>
         </div>
         <div fxFlex fxLayout="row" fxLayoutAlign="end start">
-            <button mat-stroked-button (click)="goToLoginPage()">Login</button>
+            <button mat-stroked-button (click)="onClick()">{{($isLoggedIn | async)  ? 'Logout': 'Login'}}</button>
         </div>
-    </div>
+    </div>  
    </div>
  </div>

@@ -1,11 +1,26 @@
 export class ConfigurationModel{
 
-    private _baseUrl: string;
-    public get baseUrl(): string {
-        return this._baseUrl;
+    private _authServerBaseUrl: string;
+
+    public get authServerBaseUrl():string{
+        return this._authServerBaseUrl;
     }
-    public set baseUrl(value: string) {
-        this._baseUrl = value;
+    public set authServerBaseUrl(value: string){
+        this._authServerBaseUrl=value;
+    }
+    private _ecomClientBaseUrl: string;
+    public get ecomClientBaseUrl():string{
+        return this._ecomClientBaseUrl;
+    }
+    public set ecomClientBaseUrl(value: string){
+        this._ecomClientBaseUrl=value;
+    }
+    private _uiBaseUrl: string;
+    public get uiBaseUrl():string{
+        return this._uiBaseUrl;
+    }
+    public set uiBaseUrl(value: string){
+        this._uiBaseUrl=value;
     }
 
     private _production: boolean;
@@ -80,7 +95,9 @@ export class ConfigurationModel{
     }
 
     constructor(){
-        this._baseUrl=""
+        this._authServerBaseUrl= "";
+        this._ecomClientBaseUrl= "";
+        this._uiBaseUrl= ""
         this._appearance='fill';
         this._production=false;
         this._client_id='';
