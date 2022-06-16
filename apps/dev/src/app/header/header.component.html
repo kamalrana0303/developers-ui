@@ -16,7 +16,7 @@
     </div>
  </mat-toolbar> -->
 
- <div class="global-nav"  >
+ <div class="global-nav" >
    <div class="global-nav-content" >  
     <div fxLayout="row" fxLayoutAlign="space-between start" class="padding">
         <div fxFlex>
@@ -24,8 +24,9 @@
                 <img src="../../assets/leaf.png" height="25px" width="25px">
             </a>
         </div>
-        <div fxFlex fxLayout="row" fxLayoutAlign="end start">
-            <button mat-stroked-button (click)="onClick()">{{($isLoggedIn | async)  ? 'Logout': 'Login'}}</button>
+        <div fxFlex fxLayout="row" fxLayoutAlign="end start" >
+            <ng-template [cdkPortalOutlet]="portal$ | async">
+            </ng-template>     
         </div>
     </div>  
    </div>

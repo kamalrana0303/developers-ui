@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="container-0">
+        <developers-back-button [title]="'Name'" [routeTo]="[routeTo]" [queryParams]="queryParams"></developers-back-button>
+    </div>
+    <div class="container-1">
+        <div class="roboto info">
+            Changes to your name will be reflected across your teamashii account.
+        </div>
+        <form [formGroup]="name" fxLayout="column" >
+            <mat-form-field appearance="outline" fxFlex color="maggie">
+                <mat-label>First name</mat-label>
+                <input matInput type="text" formControlName="firstName">
+            </mat-form-field>
+            <mat-form-field appearance="outline" fxFlex color="maggie">
+                <mat-label>Last name</mat-label>
+                <input matInput type="text" formControlName="lastName">
+            </mat-form-field>
+            <div fxLayout="row">
+                <div fxFlex="70">
+                    <developers-who-can-see-your-info [appName]="appName"></developers-who-can-see-your-info>
+                 </div>
+            </div>
+           
+            <div fxLayout="row" fxLayoutAlign="end end" fxFlex fxLayoutGap="5px">
+                <button mat-stroked-button (click)="cancel()" >Cancel</button>
+                <button mat-stroked-button color="primary" (click)="rename()">Save</button>
+            </div>
+        </form>
+
+    </div> 
+</div>

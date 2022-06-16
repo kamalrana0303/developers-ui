@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  appName: 'teamashii',
   baseUrl: "http://127.0.0.1:8080",
   authServerBaseUrl: "http://127.0.0.1:8080",
   ecomClientBaseUrl: 'http://127.0.0.1:9090',

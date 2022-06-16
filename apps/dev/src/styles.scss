@@ -8,7 +8,7 @@
 @import "./app/footer/footer.theme.scss";
 @import "_sharedTheming.scss";
 @import "./app/logout-prompt/logout-prompt.theme.scss";
-
+@import "./app/logout/logout-theme.scss";
 
 $white-color-pallete: $white-pallete;
 $blue-color-pallete:$blue-pallete;
@@ -41,22 +41,22 @@ $custom-typography:mat-typography-config(
 );
 @include mat-core($custom-typography);
 
-$mat-theming-primary: mat-palette($white-color-pallete, 50);
-$mat-theming-accent: mat-palette($blue-color-pallete, A200, A100, A400);
-$mat-theming-warn: mat-palette($cool-gray-color-pallete,A700, A700);
+$mat-theming-primary: mat-palette($white-color-pallete);
+$mat-theming-accent: mat-palette($blue-color-pallete);
+$mat-theming-warn: mat-palette($cool-gray-color-pallete);
 $mat-theming-theme-1: mat-light-theme($mat-theming-primary, $mat-theming-accent, $mat-theming-warn);
-
-
  
 // $mat-theming-warn-2: mat-pallete($warm-red-color-pallete, 900, A700, A700);
 
 @include angular-material-theme($mat-theming-theme-1);
 @include header-component-theme($blue-color-pallete, $black-color-pallete);
 @include login-theming-theme();
+@include logout-drop-down-panel-theme($mat-theming-theme-1, $teal-color-pallete);
+
 @include logout-prompt-theme($blue-color-pallete, $pink-color-pallete ,$warm-red-color-pallete);
 
 
-html, body { height: 100%; background-color: map-get($warm-gray-color-pallete, 50);}
+html, body { height: 100%; background-color: map-get($white-color-pallete, 900,A700);}
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .header-invisible {
@@ -66,3 +66,4 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .header-visible {
     max-height: 100px;
 }
+

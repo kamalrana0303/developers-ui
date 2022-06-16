@@ -1,25 +1,29 @@
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { ProfileDataAccessModule } from '@developers/profile/data-access';
-import { ProfilePageComponent } from './profile-page.component';
 import { ConfigurationModel } from '@developers/models';
 import { MatTabsModule } from '@angular/material/tabs';
 import { ProfileInfoModule } from '../profile-info/profile-info.module';
-
+import { ProfilePageService } from './profile-page.service';
+const routes: Routes= [
+  {path: '', loadChildren : () => import('../profile-info/profile-info.module').then(m => m.ProfileInfoModule)} 
+]
 @NgModule({
   imports: [
     CommonModule,
     MatTabsModule,
     ProfileInfoModule,
-    RouterModule.forChild([
-      {path: '', pathMatch: 'full', component: ProfilePageComponent} 
-    ]),
+    
+    RouterModule.forChild(routes),
     ProfileDataAccessModule
   ],
+  
   declarations: [
-    ProfilePageComponent
   ],
+  providers:[
+    ProfilePageService
+  ]
 })
 export class ProfilePageModule {
   public static forRoot(config:ConfigurationModel): ModuleWithProviders<ProfileDataAccessModule>{

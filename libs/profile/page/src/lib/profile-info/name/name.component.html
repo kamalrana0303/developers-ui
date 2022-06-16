@@ -1,0 +1,49 @@
+<div class="container-0">
+    <div class="backspace">
+        <developers-back-button [title]="'Name'" [routeTo]="[routeTo]" [queryParams]="queryParams"></developers-back-button>
+    </div>
+</div>
+<div class="container-1"> 
+    <mat-card>
+        <mat-card-content>
+         <!-- <div fxLayout="row" class="item">
+             <developers-user-control [name]="profileName$ | async" (rename)="rename($event)"></developers-user-control>
+         </div> -->
+         <mat-list dense>
+            
+             <mat-list-item>
+                 <div fxLayout="row" fxLayoutAlign="start center" class="item">
+                    <div fxLayout="column" class="item">
+                         <h6 fxFlex class="heading">
+                             NAME
+                         </h6>
+                         <div fxLayout="row" fxLayoutAlign="space-between" class="item">
+                            <div id="name" fxFlex="90" fxLayout="column" fxLayoutAlign="center start">
+                                <h3 >{{name$ | async}}</h3> 
+                            </div>
+                            <div fxFlex="10">
+                                <span (click)="perform()"  class="material-symbols-outlined edit">
+                                    edit
+                                </span>
+                            </div>
+                         </div> 
+                    </div>
+                 </div> 
+             </mat-list-item>
+             
+            
+             <!-- <mat-list-item>
+                 <div fxLayout="row" fxLayoutAlign="start center" class="item">
+                     <h3 matLine>Nickname</h3>
+                     <p>{{(profile$ | async)?.nickname}}</p>
+                 </div>
+             </mat-list-item> -->
+         </mat-list>
+        </mat-card-content>
+     </mat-card>
+</div>
+
+
+
+<!-- <h3 fxFlex="70">{{(profileName$ | async)?.username }}</h3>
+            <mat-icon fxFlex="30" mat-icon-button>edit</mat-icon> -->

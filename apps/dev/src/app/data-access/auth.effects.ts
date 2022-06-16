@@ -5,27 +5,30 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, exhaustMap, map, of, tap } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { LogoutPromptComponent } from '../logout-prompt/logout-prompt.component';
-import { bucketAction, loginAction, pkceAction, tokenAction } from './action';
-import {  loginStatus, loginSuccess } from './action/login.actions';
-import * as logoutAction from './action/logout.action';
-import { tokenError } from './action/token.action';
+import { bucketAction, loginAction, logoutAction, pkceAction, tokenAction } from '@developers/models';
+
 import { Code } from './app-data.model';
 import { AuthService } from './auth.service';
 import { generateCodeChallegeFromVerifier, generateCodeVerifier } from './utils/crypto.utils';
+import { fetch } from '@nrwl/angular';
+import { PortalBridgeService } from './portal-bridge.service';
+import { LoginComponent } from '../login/login.component';
+import { ComponentPortal } from '@angular/cdk/portal';
+import { LogoutComponent } from '../logout/logout.component';
 
 @Injectable()
 export class AuthEffects {
 
-  constructor(private actions$: Actions, @Inject('authService') private authService: AuthService, private router: Router, private dialogService: MatDialog) {}
+  constructor(private actions$: Actions, @Inject('authService') private authService: AuthService, private router: Router, private dialogService: MatDialog, private portalBridgeService: PortalBridgeService) {}
 
   checkToken$= createEffect(()=> this.actions$.pipe(
     ofType(loginAction.checkToken),
     exhaustMap(()=> {
       return this.authService.checkToken().then(isToken=> {
         if(isToken){
-          return loginSuccess()
+          return loginAction.loginSuccess()
         }
-        return loginStatus({loggedIn: false})
+        return loginAction.loginStatus({loggedIn: false})
       }
     )}
   )));
@@ -109,6 +112,16 @@ export class AuthEffects {
     })
   ))
 
+  tokenError$= createEffect(()=> this.actions$.pipe(
+    ofType(tokenAction.tokenError),
+    fetch({
+      run: (action) => {
+     
+        return logoutAction.loggedOutConfirmed()
+      } 
+    })
+  ))
+
   loadTokenSuccessFully$= createEffect(()=> {
     return this.actions$.pipe(
       ofType(bucketAction.successfullToken),
@@ -173,7 +186,7 @@ export class AuthEffects {
         if(x){
           return loginAction.loginStatus({loggedIn: false})
         }
-        return loginStatus({loggedIn: true})
+        return loginAction.loginStatus({loggedIn: true})
       }))
      })
   ))

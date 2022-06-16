@@ -1,6 +1,6 @@
 import { Error } from "@developers/models";
 import { Action, createReducer, on, StateObservable } from "@ngrx/store";
-import { tokenAction } from "../action";
+import { tokenAction } from "@developers/models";
 
 export interface State {
     error: Error<any> | null

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { catchError, map, Observable, of, tap } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { Token } from './app-data.model';
 import {Buffer} from 'buffer';
@@ -22,7 +22,7 @@ export class AuthService implements AuthServiceItf{
   public refreshToken():Observable<Token>{
     let refresh_token = this.getRefreshTokenFromSessionStorage2();
     let refreshTokenUri: string = this.generateRefreshTokenUri(refresh_token);
-    return this.http.post<Token>(refreshTokenUri, null, {headers: {'Authorization': 'BASIC '+ Buffer.from(`${environment.clientId}: ${environment.secret}`).toString('base64')}})
+    return this.http.post<Token>(refreshTokenUri, null, {headers: {'Authorization': 'BASIC '+ Buffer.from(`${environment.clientId}:${environment.secret}`).toString('base64')}})
   }
 
   private generateRefreshTokenUri(refresh_token:any){
@@ -48,9 +48,15 @@ export class AuthService implements AuthServiceItf{
   }
 
   public loggeOut(): Observable<boolean>{
-    this.removeAccessToken();
-    let loggedOut:boolean =  (!sessionStorage.getItem("access_token") && !sessionStorage.getItem("refresh_token") && !sessionStorage.getItem("id_token"));
-    return of(loggedOut);
+    return this.http.get(environment.authServerBaseUrl+"/logout").pipe(map(x=>{
+      this.removeAccessToken();
+      let loggedOut:boolean =  (!sessionStorage.getItem("access_token") && !sessionStorage.getItem("refresh_token") && !sessionStorage.getItem("id_token"));
+      return loggedOut;
+    }), catchError((error)=> {
+      this.removeAccessToken();
+      let loggedOut:boolean =  (!sessionStorage.getItem("access_token") && !sessionStorage.getItem("refresh_token") && !sessionStorage.getItem("id_token"));
+      return of(loggedOut);
+     }))
   }
 
   async checkToken():Promise<boolean>{

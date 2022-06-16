@@ -5,12 +5,16 @@ footer{
 }
 header{
     width: 100%;
+    position: fixed;
+}
+.content{
+    margin-top: 80px;
 }
 
 main{
     min-height: 500px;
- 
     border: 1px dashed rgba(255, 192, 203, 0.363);
     
 }
+
 

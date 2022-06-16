@@ -22,7 +22,7 @@ const profilesReducer = createReducer(
   on(ProfilesActions.loadProfilesSuccess, (state, { profile }) => {
 
     return ( {...state, profile}) }),
-  on(ProfilesActions.loadProfilesFailure, (state, { error }) => ({
+  on(ProfilesActions.profilesFailure, (state, { error }) => ({
     ...state,
     error,
   }))

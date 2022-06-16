@@ -5,9 +5,96 @@
 .layout-margin{
     margin: 0px 12px;
 }
-.mat-list-item:hover{
-    background-color: #fff;
-}
+
 .item{
     width: 100%;
+}
+.mat-card:not([class*=mat-elevation-z]) {
+    box-shadow: none;
+}
+.mat-card:not([class*=mat-elevation-z]) {
+    box-shadow: none;
+}
+
+.mat-card{
+    border: 1px solid #dadce0;
+    border-radius: 8px !important;
+    padding: 0px;
+}
+.mat-card-title{
+    padding: 18px;
+}
+.mat-list-item{
+    cursor: pointer;
+   
+}
+.mat-list-base[dense] .mat-list-item, .mat-list-base[dense] .mat-list-option {
+    height: 50px;
+}
+.mat-list-base[dense] .mat-list-item.mat-2-line, .mat-list-base[dense] .mat-list-option.mat-2-line{
+    height: 80px;
+}
+.mat-list-item{
+    h5{
+        margin-bottom: 0px;
+    }
+    p{
+        margin-bottom: 0px;
+    }
+}
+.reverse-list{
+    display: flex !important;
+    flex-direction: column-reverse !important;
+}
+.aa{
+    padding: 0 10px;
+}
+.bb{
+    padding: 0 10px;
+}
+.cc{
+    padding: 0 10px;
+}
+.dd{
+    padding: 0 10px;
+}
+.a:hover{
+    .aaa{
+        position: absolute !important;
+    }
+    .a{
+        position: absolute;
+
+    }
+}
+.b:hover~.a{
+    .aaa{
+        position: absolute !important;
+    }
+}
+.b:hover{
+    .bbb{
+        position: absolute !important;
+    }
+   
+}
+.c:hover~.b{
+    .bbb{
+        position: absolute !important;
+    }
+}
+.c:hover{
+    .ccc{
+        position: absolute !important;
+    }
+   
+}
+.d:hover~.c{
+    .ccc{
+        position: absolute !important;
+    }
+}
+
+.aaa,.bbb,.ccc,.ddd,.mat-divider-inset{
+    position: static !important;
 }

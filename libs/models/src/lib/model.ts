@@ -26,7 +26,7 @@ export interface Code{
 }
 
 export interface HeaderServiceItf{
- authHeader(): {headers: HttpHeaders | {[header: string]: string | string[]}}
+ authHeader(): {headers: HttpHeaders | {[header: string]: string | string[]}} 
 }
 export interface Code{
   value: any
@@ -56,12 +56,29 @@ export interface Token{
   "refresh_token":any;
 }
 
+export interface Name{
+  firstName: string;
+  lastName: string;
+  displayName:string;
+  nickName: string;
+}
+
 export interface Profile{
-  username: string;
+  name: Name;
   email: string;
   cpId: string;
   gender: string;
   billingAddresses: []
   dob: null
   shippingAddresses: []
+}
+
+export interface NameRM{
+  firstName: string;
+  lastName: string;
+  cpId: string;
+}
+
+export enum Operations{
+  EDIT
 }

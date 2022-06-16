@@ -1,5 +1,11 @@
 export class ConfigurationModel{
-
+    private _appName :string
+    public get appName():string{
+        return this._appName;
+    }
+    public set appName(value: string){
+        this._appName =value;
+    }
     private _authServerBaseUrl: string;
 
     public get authServerBaseUrl():string{
@@ -95,6 +101,7 @@ export class ConfigurationModel{
     }
 
     constructor(){
+        this._appName =""
         this._authServerBaseUrl= "";
         this._ecomClientBaseUrl= "";
         this._uiBaseUrl= ""

@@ -1,0 +1,29 @@
+
+@mixin logout-drop-down-panel-theme($mat-theming-theme, $teal){
+   $background: map-get($mat-theming-theme, background);
+   $warn: map-get($mat-theming-theme, warn);
+   
+   #logout-drop-down-panel{
+    background-color: mat-color($background, background);
+    text-align: center;
+    .container{
+        background-color: mat-color($background, background);
+        color: map-get($teal, 400);
+    }
+    .drop-down-panel-header{
+        position: absolute;
+        background-color: map-get($teal, 100)  ; 
+        min-height: 80px;
+        width: 100%;
+        top: 0;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+    }
+    .mat-list-item{
+        width: 100%;
+    }
+}
+
+   
+  
+}

@@ -24,20 +24,19 @@ import { DataAccessModule } from './data-access/data-access.module';
 import { BucketComponent } from './bucket/bucket.component';
 import { ProfileDataAccessModule } from '@developers/profile/data-access';
 import { AuthService } from './data-access/auth.service';
-import { ConfigurationModel } from '@developers/models';
 import { ProfilePageModule } from '@developers/profile/page';
 import { HeaderService } from './header.service';
 import { LogoutPromptComponent } from './logout-prompt/logout-prompt.component';
 import { MatDialogModule } from '@angular/material/dialog';
-
+import { LoginComponent } from './login/login.component';
+import { LogoutComponent } from './logout/logout.component';
+import { PortalModule } from '@angular/cdk/portal';
+import { PortalBridgeService } from './data-access/portal-bridge.service';
+import {MatProgressBarModule} from "@angular/material/progress-bar"
 
 const libConfigModule=[
   ProfilePageModule.forRoot(environment as any),
   ProfileDataAccessModule.forRoot(environment as any)
-  // AuthDataAccessModule.forRoot(environment as any),
-  // OauthDataAccessModule.forRoot(environment as any),
-  // OauthAuthCodeModule.forRoot(environment as any),
-  // AuthPageModule.forRoot(environment as any)
 ]
 
 const material: any[]=[
@@ -46,12 +45,14 @@ const material: any[]=[
   MatIconModule,
   MatDividerModule,
   A11yModule,
+  PortalModule,
   OverlayModule,
   MatListModule,
   MatButtonModule,
   MatFormFieldModule,
   MatInputModule,
-  MatDialogModule
+  MatDialogModule,
+  MatProgressBarModule
 ]
 
 @NgModule({
@@ -62,7 +63,9 @@ const material: any[]=[
     MainComponent,
     HeaderComponent,
     BucketComponent,
-    LogoutPromptComponent
+    LogoutPromptComponent,
+    LoginComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
@@ -77,6 +80,7 @@ const material: any[]=[
   
   bootstrap: [AppComponent],
   providers:[
+    PortalBridgeService,
     { provide: 'authService', useFactory: getAuthServiceFactory, deps: [AuthService]},
     {
       provide: 'headerService', useFactory: headerFactory, deps: [HeaderService]

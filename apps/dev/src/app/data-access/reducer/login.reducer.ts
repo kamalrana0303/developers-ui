@@ -1,5 +1,5 @@
 import {  Action, createReducer, on } from '@ngrx/store';
-import {  loginAction } from '../action';
+import {  loginAction } from '@developers/models';
 
 export const tokenFeatureKey = 'token';
 

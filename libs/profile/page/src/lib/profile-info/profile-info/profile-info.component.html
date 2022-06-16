@@ -2,44 +2,16 @@
     
    <developers-profile-info-heading></developers-profile-info-heading>
     
-    <mat-card>
+    <mat-card color="accent">
         <mat-card-title>
             Basic Info
         </mat-card-title>
         <mat-card-content>
-            <mat-nav-list dense>
-                <mat-list-item >
-                    <div fxLayout="row" fxLayoutAlign="space-between start" class="item">
-                        <h5 matLine >EMAIL</h5>
-                        <p matLine >{{(personalInfo$ | async)?.email}}</p>
-                        <div>
+            <mat-nav-list class= "reverse-list" dense>
 
-                        </div>
-                    </div>
-                </mat-list-item>
-                <mat-divider [inset]="true"></mat-divider>
+               <div class="d">
                 <mat-list-item >
-                    <div fxLayout="row" fxLayoutAlign="space-between space-between" class="item">
-                        <h5 matLine> USERNAME </h5>
-                        <p>{{(personalInfo$ | async)?.username}}</p>
-                        <div fxLayout="row" fxLayoutAlign="end start">
-                            <a routerLink=""><mat-icon>info</mat-icon></a>
-                        </div>
-                    </div>
-                </mat-list-item>
-                <mat-divider [inset]="true"t></mat-divider>
-                <mat-list-item >
-                    <div fxLayout="row" fxLayoutAlign="space-between space-between" class="item">
-                        <h5 matLine> DOB </h5>
-                        <p>{{(personalInfo$ | async)?.dob}}</p>
-                        <div fxLayout="row" fxLayoutAlign="end start">
-                            <a routerLink=""><mat-icon>info</mat-icon></a>
-                        </div>
-                    </div>
-                </mat-list-item>
-                <mat-divider [inset]="true"t></mat-divider>
-                <mat-list-item >
-                    <div fxLayout="row" fxLayoutAlign="space-between space-between" class="item">
+                    <div fxLayout="row" fxLayoutAlign="space-between center" class="item">
                         <h5 matLine> GENDER </h5>
                         <p>{{(personalInfo$ | async)?.gender}}</p>
                         <div fxLayout="row" fxLayoutAlign="end start">
@@ -47,7 +19,57 @@
                         </div>
                     </div>
                 </mat-list-item>
-                <mat-divider [inset]="true"t></mat-divider>
+               </div>
+
+               <div class="c">
+                <mat-list-item >
+                    <div fxLayout="row" fxLayoutAlign="space-between center" class="item">
+                        <h5 matLine> BIRTHDAY </h5>
+                        <p>{{(personalInfo$ | async)?.dob}}</p>
+                        <div fxLayout="row" fxLayoutAlign="end start">
+                            <a routerLink=""><mat-icon>info</mat-icon></a>
+                        </div>
+                    </div>
+                </mat-list-item>
+                <div class="cc">
+                    <mat-divider  class = "ccc"></mat-divider>
+                </div>
+               
+                </div>
+
+               <div class="b"> 
+                <mat-list-item>
+                    
+                    <div fxLayout="row" fxLayoutAlign="space-between center" class="item">
+                        <h5 matLine> USERNAME </h5>
+                        <p>{{(firstName$ | async)}} {{lastName$ | async}}</p>
+                        <div fxLayout="row" fxLayoutAlign="end start">
+                            <a (click)="name()"><mat-icon>info</mat-icon></a>
+                        </div>
+                    </div>
+               
+                </mat-list-item>
+                <div class="bb">
+                    <mat-divider  class = "bbb"></mat-divider>
+                </div>
+                
+                </div>
+               
+               <div class="a">
+                <mat-list-item >
+                    <div fxLayout="row" fxLayoutAlign="space-between center" class="item">
+                        <h5 matLine >EMAIL</h5>
+                        <p matLine >{{(personalInfo$ | async)?.email}}</p>
+                        <div>
+                        </div>
+                    </div>
+                </mat-list-item>
+                <div class="aa">
+                    <mat-divider  class="aaa" ></mat-divider>
+                </div>
+                
+                </div>
+                
             </mat-nav-list>
         </mat-card-content>
        

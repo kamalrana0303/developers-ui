@@ -1,5 +1,5 @@
 import { DOCUMENT } from "@angular/common";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Inject, Injectable, Optional } from "@angular/core";
 import { AuthServiceItf, ConfigurationModel, HeaderServiceItf, Profile, ResponseBody, Token } from "@developers/models";
 import { HeaderService } from "apps/dev/src/app/header.service";
@@ -15,5 +15,10 @@ export class ProfileService{
     }
     public getUserProfile():Observable<Profile>{
         return this.http.get<Profile>(this.config.ecomClientBaseUrl+"/profile", this.headerService.authHeader() );
+    }
+
+    public rename(cpId:string, firstName: string, lastName: string):Observable<Profile>{
+        let header:{headers: HttpHeaders | {[header: string]: string | string[]} | any}=this.headerService.authHeader();
+        return this.http.patch<Profile>(this.config.ecomClientBaseUrl + "/profile?cpId="+cpId+"&firstName="+firstName+"&lastName="+lastName , null, this.headerService.authHeader());
     }
 }

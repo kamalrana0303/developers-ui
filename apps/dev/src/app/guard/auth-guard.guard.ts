@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { loadPKCE } from '../data-access/action/pkce.actions';
+import { pkceAction } from '@developers/models';
 import { AuthService } from '../data-access/auth.service';
 
 @Injectable({
@@ -17,7 +17,7 @@ export class AuthGuardGuard implements CanActivate {
         if(isTokenExist){
           return true;
         }
-        this.store.dispatch(loadPKCE())
+        this.store.dispatch(pkceAction.loadPKCE())
         return false;
       })
   }

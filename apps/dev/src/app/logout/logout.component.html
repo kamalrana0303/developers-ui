@@ -1,0 +1,43 @@
+<button mat-icon-button  
+    cdkOverlayOrigin 
+    #originOverlay="cdkOverlayOrigin"
+    [class.drop-down-input-active]="$showPanel | async">
+    {{($profile| async)?.email|initialCase}}
+</button>
+<ng-template cdkConnectedOverlay 
+    cdkConnectedOverlayHasBackdrop
+    cdkConnectedOverlayBackdropClass="cdk-overlay-transparent-backdrop"
+    [cdkConnectedOverlayOrigin]="originOverlay" 
+    [cdkConnectedOverlayOpen]="!!(($showPanel ) | async)"
+    [cdkConnectedOverlayOffsetY]="20">
+    <mat-card class="card" [class.mat-elevation-z4]="true" id="logout-drop-down-panel" fxLayout="column" fxLayoutAlign="start center">
+        <div class="drop-down-panel-header">
+
+        </div>
+        <div class="container">
+            <div id="name">
+                {{($profile | async)?.email | initialCase}}
+            </div>
+        </div>
+        
+        <div class="wordbreak item" >
+           {{($profile | async)?.email}}
+        </div>
+        <div  class="item">
+            <button  mat-stroked-button (click)="attemptToLogout()">Logout</button>
+        </div>
+        <mat-nav-list dense style="width: 100%">
+            <mat-divider></mat-divider>
+            <div fxLayout="row" fxLayoutAlign="start center">
+                <mat-list-item >
+                    <a routerLink="/auth/profile">Manage your Account</a>
+                    
+                </mat-list-item>
+            </div>
+            
+        </mat-nav-list>
+    </mat-card>
+   
+    
+
+</ng-template>

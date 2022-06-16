@@ -1,16 +1,37 @@
 import { Inject, Injectable, InjectionToken } from '@angular/core';
-import { AuthServiceItf } from '@developers/models';
+import { AuthServiceItf, tokenAction } from '@developers/models';
 import { createEffect, Actions, ofType } from '@ngrx/effects';
+import { select, Store } from '@ngrx/store';
 import { fetch } from '@nrwl/angular';
-import { map } from 'rxjs';
+import { catchError, exhaustMap, map, switchMap } from 'rxjs';
 import { ProfileService } from '../profile.service';
 
 import * as ProfilesActions from './profiles.actions';
+import { selectCpId } from './reducers';
 import * as ProfilesFeature from './reducers/profiles.reducer';
 
 
 @Injectable()
 export class ProfilesEffects {
+  rename$ = createEffect(()=> {
+    return this.actions$.pipe(
+      ofType(ProfilesActions.renameProfile),
+      fetch({
+        run: (action)=> {
+          alert(JSON.stringify(action))
+          return this.profileService.rename(action.cpId, action.firstName , action.lastName).pipe(map(res=> {
+            return ProfilesActions.loadProfilesSuccess({profile: res})
+          }))
+        },
+        onError: (action, error)=> {
+          if(error.status === 401){
+            this.store.dispatch(tokenAction.tokenExpired())
+          }
+          return ProfilesActions.profilesFailure(error)
+        }
+      })
+    )
+  })
   init$ = createEffect(() =>
     this.actions$.pipe(
       ofType(ProfilesActions.init),
@@ -24,23 +45,15 @@ export class ProfilesEffects {
         },
         onError: (action, error) => {
           if(error?.status == 401){
-            return 
+            return tokenAction.tokenExpired()
           }
-          return ProfilesActions.loadProfilesFailure({ error });
+          return ProfilesActions.profilesFailure( error );
         },
       })
     )
   );
 
-  failure$= createEffect(()=> this.actions$.pipe(
-    ofType(ProfilesActions.loadProfilesFailure),
-    fetch({
-      run: (action) => {
-        return this,this.profileService
-      },
-      onError: ,
-    })
-  ))
 
-  constructor(private readonly actions$: Actions, private profileService: ProfileService) {}
+  
+  constructor(private readonly actions$: Actions, private profileService: ProfileService, private store: Store) {}
 }

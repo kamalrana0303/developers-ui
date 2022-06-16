@@ -2,19 +2,23 @@
     $system-gray: mat-color($system-gray-pallete, 50, 50);
     $black: mat-color($black-color-pallete, 50, 100);
     $warn: mat-color($warm-red-color-pallete, 900);
+    
     .gray-background{
         background-color: $warn;
     }
-    mat-card.mat-card{
-        background-color: $system-gray;
-        border-radius: 0px !important;
+    mat-card.gray{
+        mat-card.mat-card{
+            background-color: $system-gray;
+            border-radius: 0px !important;
+        }
+        mat-icon.mat-icon.mat-amber{
+            color: mat-color($amber-color-pallete, 400)
+        }
+        .bird{
+            background-color: $system-gray !important;
+        }
     }
-    mat-icon.mat-icon.mat-amber{
-        color: mat-color($amber-color-pallete, 400)
-    }
-    .bird{
-        background-color: $system-gray !important;
-    }
+   
     .material-form{
         .mat-raised-button.mat-amber, .mat-flat-button.mat-amber{
             background-color: mat-color($amber-color-pallete, 400);
@@ -132,6 +136,68 @@
             background-color: $theme-background-color;
         }
        
+    }
+
+    developers-name-edit{
+        .mat-storked-button:hover{
+            color: mat-color($blue-color-pallete, 700);
+        }
+        .mat-stroked-button{
+            color: mat-color($blue-color-pallete, 900);
+        }
+        
+        mat-form-field.mat-form-field.mat-maggie{
+            // mat-label normal state style
+            .mat-form-field-label {
+                color: mat-color($black-color-pallete, 900);
+            }
+            &.mat-form-field-appearance-outline .mat-form-field-outline-thick{
+                color: mat-color($black-color-pallete, 900);
+            }
+          
+            &.mat-focused{
+                .mat-form-field-label {
+                    color: mat-color($blue-color-pallete, 900);
+                }
+                .mat-form-field-outline-thick{
+                    color: mat-color($blue-color-pallete, 900);
+                   // box-shadow: 0px 0px 0px 1px mat-color($system-gray-color-pallete, 400), 0px 0px 0px 2px mat-color($system-gray-color-pallete, 300), 0px 0px 0px 3px mat-color($system-gray-color-pallete, 200) !important;
+                    border-radius: 6px;
+                }
+               
+                // mat-label focused style
+                .mat-form-field-label{
+                    color: mat-color($blue-color-pallete);
+                }
+                .mat-form-field-ripple{
+                    background-color: mat-color($blue-color-pallete, 900) !important;
+                }
+            }
+            // mat-input error outline color
+            &.mat-form-field-invalid{
+                .mat-form-field-outline-thick{
+                    color: mat-color($blue-color-pallete, 900);
+                    border-radius: 6px;
+                    opacity: 0.8!important;
+                }
+            }
+
+        }
+       
+        // mat-input carent color
+        .mat-input-element {
+            caret-color: mat-color($system-gray-color-pallete, 900);
+        }
+       
+        
+        // mat-input error carent color
+        .mat-form-field-invalid .mat-input-element, .mat-warn .mat-input-element {
+            caret-color: mat-color($warm-red-color-pallete, 800);
+        }
+        
+        .mat-error{
+            color: $warn;
+        }
     }
     
   
