@@ -11,6 +11,7 @@
     "oauth-data-access": "libs/oauth/data-access",
     "profile-data-access": "libs/profile/data-access",
     "profile-page": "libs/profile/page",
+    "progress-bar": "libs/progress-bar",
     "ui-styles": "libs/ui/styles"
   }
 }

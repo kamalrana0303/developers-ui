@@ -18,7 +18,6 @@ export class ProfilesEffects {
       ofType(ProfilesActions.renameProfile),
       fetch({
         run: (action)=> {
-          alert(JSON.stringify(action))
           return this.profileService.rename(action.cpId, action.firstName , action.lastName).pipe(map(res=> {
             return ProfilesActions.loadProfilesSuccess({profile: res})
           }))
@@ -32,7 +31,7 @@ export class ProfilesEffects {
       })
     )
   })
-  init$ = createEffect(() =>
+  initProiflePage$ = createEffect(() =>
     this.actions$.pipe(
       ofType(ProfilesActions.init),
       fetch({

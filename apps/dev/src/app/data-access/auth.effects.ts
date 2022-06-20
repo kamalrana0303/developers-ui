@@ -12,9 +12,8 @@ import { AuthService } from './auth.service';
 import { generateCodeChallegeFromVerifier, generateCodeVerifier } from './utils/crypto.utils';
 import { fetch } from '@nrwl/angular';
 import { PortalBridgeService } from './portal-bridge.service';
-import { LoginComponent } from '../login/login.component';
-import { ComponentPortal } from '@angular/cdk/portal';
-import { LogoutComponent } from '../logout/logout.component';
+
+
 
 @Injectable()
 export class AuthEffects {
@@ -191,4 +190,5 @@ export class AuthEffects {
      })
   ))
   //fail to load pkce
+
 }

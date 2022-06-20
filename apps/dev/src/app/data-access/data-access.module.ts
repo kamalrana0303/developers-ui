@@ -8,7 +8,6 @@ import { EffectsModule } from '@ngrx/effects';
 import { AuthEffects } from './auth.effects';
 import * as mainReducer from './reducer/index';
 
-
 @NgModule({
   declarations: [],
   imports: [
@@ -20,8 +19,6 @@ import * as mainReducer from './reducer/index';
     StoreModule.forRoot(mainReducer.reducers),
     EffectsModule.forRoot([AuthEffects]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
-  ],
-  
-
+  ]
 })
 export class DataAccessModule { }

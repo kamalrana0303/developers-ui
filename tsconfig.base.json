@@ -25,6 +25,7 @@
         "libs/profile/data-access/src/index.ts"
       ],
       "@developers/profile/page": ["libs/profile/page/src/index.ts"],
+      "@developers/progress-bar": ["libs/progress-bar/src/index.ts"],
       "@developers/ui/styles": ["libs/ui/styles/src/index.ts"]
     }
   },

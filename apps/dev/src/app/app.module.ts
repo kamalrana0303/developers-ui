@@ -33,11 +33,15 @@ import { LogoutComponent } from './logout/logout.component';
 import { PortalModule } from '@angular/cdk/portal';
 import { PortalBridgeService } from './data-access/portal-bridge.service';
 import {MatProgressBarModule} from "@angular/material/progress-bar"
+import { ProgressBarModule } from '@developers/progress-bar';
+
 
 const libConfigModule=[
   ProfilePageModule.forRoot(environment as any),
   ProfileDataAccessModule.forRoot(environment as any)
 ]
+
+
 
 const material: any[]=[
   MatToolbarModule,
@@ -74,6 +78,7 @@ const material: any[]=[
     HttpClientModule,
     DirectivesModule,
     DataAccessModule,
+    ProgressBarModule,
     material,
     libConfigModule
   ],

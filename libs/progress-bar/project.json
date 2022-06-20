@@ -1,0 +1,26 @@
+{
+  "projectType": "library",
+  "root": "libs/progress-bar",
+  "sourceRoot": "libs/progress-bar/src",
+  "prefix": "developers",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/progress-bar"],
+      "options": {
+        "jestConfig": "libs/progress-bar/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/progress-bar/src/**/*.ts",
+          "libs/progress-bar/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

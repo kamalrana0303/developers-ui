@@ -17,7 +17,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { NameEditComponent } from './name-edit/name-edit.component';
 import {ModelsModule} from '@developers/models';
 import { NameEditResolver } from './guard/name-edit.resolver';
-import { ProfilePageService } from '../profile-page/profile-page.service';
 
 
 @NgModule({
@@ -54,6 +53,5 @@ import { ProfilePageService } from '../profile-page/profile-page.service';
     ])
   ],
   providers:[NameEditResolver],
-  exports: [ProfileInfoComponent]
 })
 export class ProfileInfoModule { }

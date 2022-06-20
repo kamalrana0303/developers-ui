@@ -1,6 +1,6 @@
 {
   "extends": "./tsconfig.json",
-  "include": ["**/*.ts", "../../libs/profile/data-access/src/lib/header.interceptor.ts"],
+  "include": ["**/*.ts", "../../libs/profile/data-access/src/lib/header.interceptor.ts", "../../libs/progress-bar/src/lib/progress-bar/store/progress.effect.ts", "../../libs/progress-bar/src/lib/progress-bar/store/progress.reducer.ts"],
   "compilerOptions": {
     "types": ["jest", "node"]
   }

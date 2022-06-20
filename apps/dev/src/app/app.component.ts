@@ -1,5 +1,8 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, HostListener } from '@angular/core';
+import { progressAction } from '@developers/models';
+import { select, Store } from '@ngrx/store';
+import { tap } from 'rxjs';
 
 @Component({
   selector: 'developers-root',
@@ -14,9 +17,8 @@ import { Component, HostListener } from '@angular/core';
   ],
 })
 export class AppComponent {
-  
+  constructor(private store: Store){}
   title = 'dev';
-  ngOnInit(){
 
-  }
+  
 }

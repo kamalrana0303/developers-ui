@@ -1,9 +1,10 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, Optional } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ConfigurationModel, Name, NameRM, Profile } from '@developers/models';
 import { renameProfile, selectCpId, selectProfileName } from '@developers/profile/data-access';
 import { select, Store } from '@ngrx/store';
+import { ProgressDirective } from 'libs/models/src/lib/directive/progress.directive';
 import { config, Subscription, switchMap, tap } from 'rxjs';
 
 @Component({
@@ -12,7 +13,7 @@ import { config, Subscription, switchMap, tap } from 'rxjs';
   styleUrls: ['./name-edit.component.scss']
 })
 export class NameEditComponent implements OnInit {
-
+  submitting:boolean =false;
   routeTo: string | any;
   queryParams = {}
   name: FormGroup |any;
@@ -28,6 +29,14 @@ export class NameEditComponent implements OnInit {
       "lastName": [profile?.name?.lastName]
     })
     this.routeTo=this.activated.snapshot.queryParamMap.get("continue");
+  }
+
+  onProgressShow() {
+    this.submitting = true;
+  }
+
+  onProgressHide() {
+    this.submitting = false;
   }
 
   cancel(){
