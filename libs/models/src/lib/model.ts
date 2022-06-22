@@ -82,3 +82,8 @@ export interface NameRM{
 export enum Operations{
   EDIT
 }
+
+export enum GENDER{
+  MALE,
+  FEMALE
+}

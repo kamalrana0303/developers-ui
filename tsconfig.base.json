@@ -26,7 +26,8 @@
       ],
       "@developers/profile/page": ["libs/profile/page/src/index.ts"],
       "@developers/progress-bar": ["libs/progress-bar/src/index.ts"],
-      "@developers/ui/styles": ["libs/ui/styles/src/index.ts"]
+      "@developers/ui/styles": ["libs/ui/styles/src/index.ts"],
+      "@developers/your-address": ["libs/your-address/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

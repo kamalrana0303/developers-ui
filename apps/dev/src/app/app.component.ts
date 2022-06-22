@@ -1,8 +1,9 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, HostListener } from '@angular/core';
-import { progressAction } from '@developers/models';
-import { select, Store } from '@ngrx/store';
-import { tap } from 'rxjs';
+import { Event, NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router } from '@angular/router';
+import { selectProgress, showProgress } from '@developers/progress-bar';
+import {  Store } from '@ngrx/store';
+import {  map, Observable } from 'rxjs';
 
 @Component({
   selector: 'developers-root',
@@ -17,8 +18,24 @@ import { tap } from 'rxjs';
   ],
 })
 export class AppComponent {
-  constructor(private store: Store){}
-  title = 'dev';
+  public loading$:Observable<boolean> =this.router.events.pipe(map((e:Event)=> {
+    return this.checkRoutingEvent(e)
+ }))
 
+ 
+  constructor(private store: Store, private router:Router){
+    
+  }
+
+  checkRoutingEvent(routerEvent: Event):boolean{
+    if(routerEvent instanceof NavigationStart){
+      return true;
+    }
+    if(routerEvent instanceof NavigationCancel || NavigationEnd || NavigationError){
+      return false;
+    }
+    return true;
+  }
+  title = 'dev';
   
 }

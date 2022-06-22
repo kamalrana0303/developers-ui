@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import {progressAction} from "@developers/models";
 import { map } from "rxjs";
-import { init, loadProfilesSuccess, profilesFailure, renameProfile } from "@developers/profile/data-access";
+import { init, loadProfilesSuccess, profilesFailure, renameProfile, updateDob, updateGender } from "@developers/profile/data-access";
 import { tokenExpired } from "libs/models/src/lib/action/token.action";
 
 interface x{
@@ -15,7 +15,7 @@ interface y{
 }
 const PROGRESS_ACTIONS:  { [progressId: string]: { showActions: string[], hideActions: string[] } }  = {
     "profile-page":{
-        showActions: [renameProfile.type],
+        showActions: [renameProfile.type, updateDob.type, updateGender.type],
         hideActions: [loadProfilesSuccess.type, profilesFailure.type, tokenExpired.type]
     }
    

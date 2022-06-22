@@ -1,0 +1,22 @@
+<div class="container-0">
+    <div class="backspace">
+        <developers-back-button [title]="'Gender'" [routeTo]="[routeTo]" [queryParams]="queryParams"></developers-back-button>
+    </div>
+</div>
+<div class="container-1">
+    <mat-card class="none roboto info">
+        Your gender may be used for personalization across {{env.appName}} services, including how we refer to you.
+    </mat-card>
+    <mat-card>
+        <h5 class="heading">
+            GENDER
+        </h5>
+        <mat-radio-group aria-label="Select an option" fxLayout="column" fxLayoutGap="20px" [(ngModel)]="gender" (change)="selectGender($event)">
+            <mat-radio-button value="MALE">MALE</mat-radio-button>
+            <mat-radio-button value="FEMALE">FEMALE</mat-radio-button>
+        </mat-radio-group>
+        <ng-container *progressSnackBar="{onShow: onProgressShow.bind(this),onHide: onProgressHide.bind(this), progressId: 'profile-page'}">
+
+        </ng-container>
+    </mat-card>
+</div>

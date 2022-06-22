@@ -6,7 +6,6 @@ import { EffectsModule } from '@ngrx/effects';
 import { ProgressEffect } from './progress-bar/store/progress.effect';
 
 @NgModule({
-  
   declarations: [],
   imports: [
     CommonModule,

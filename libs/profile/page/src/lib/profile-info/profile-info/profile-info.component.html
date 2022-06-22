@@ -15,7 +15,7 @@
                         <h5 matLine> GENDER </h5>
                         <p>{{(personalInfo$ | async)?.gender}}</p>
                         <div fxLayout="row" fxLayoutAlign="end start">
-                            <a routerLink=""><mat-icon>info</mat-icon></a>
+                            <a (click)="gender()"><mat-icon>info</mat-icon></a>
                         </div>
                     </div>
                 </mat-list-item>
@@ -25,9 +25,9 @@
                 <mat-list-item >
                     <div fxLayout="row" fxLayoutAlign="space-between center" class="item">
                         <h5 matLine> BIRTHDAY </h5>
-                        <p>{{(personalInfo$ | async)?.dob}}</p>
+                        <p>{{(personalInfo$ | async)?.dob | date: 'MMM, dd YYYY'}}</p>
                         <div fxLayout="row" fxLayoutAlign="end start">
-                            <a routerLink=""><mat-icon>info</mat-icon></a>
+                            <a (click)="dob()"><mat-icon>info</mat-icon></a>
                         </div>
                     </div>
                 </mat-list-item>

@@ -19,6 +19,16 @@ export class ProfileService{
 
     public rename(cpId:string, firstName: string, lastName: string):Observable<Profile>{
         let header:{headers: HttpHeaders | {[header: string]: string | string[]} | any}=this.headerService.authHeader();
-        return this.http.patch<Profile>(this.config.ecomClientBaseUrl + "/profile?cpId="+cpId+"&firstName="+firstName+"&lastName="+lastName , null, this.headerService.authHeader());
+        return this.http.patch<Profile>(this.config.ecomClientBaseUrl + "/profile/name?cpId="+cpId+"&firstName="+firstName+"&lastName="+lastName , null, this.headerService.authHeader());
+    }
+
+    public dob(x:{cpId:string, date: any}):Observable<Profile> {
+        
+        let header: {headers: HttpHeaders | {[header:string]: string | string[]} | any}= this.headerService.authHeader();
+        return this.http.patch<Profile> (this.config.ecomClientBaseUrl + "/profile/birthday" ,          x,this.headerService.authHeader())
+    }
+
+    public gender(x: {cpId: string, gender: any}):Observable<Profile> {
+        return this.http.patch<Profile> (this.config.ecomClientBaseUrl + "/profile/gender", x, this.headerService.authHeader());
     }
 }

@@ -41,7 +41,7 @@ import { showProgress } from "../../../../progress-bar/src/lib/progress-bar/stor
     }
   
     ngOnDestroy(): void {
-    // this.unsubscribe$.next();
+     this.unsubscribe$.next(null);
       this.unsubscribe$.complete();
     }
   }

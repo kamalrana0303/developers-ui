@@ -7,8 +7,8 @@ import { ScrollWindowDirective } from './scroll-window.directive';
   imports: [CommonModule],
   declarations: [
     InitialCasePipe,
-    ScrollWindowDirective
+   // ScrollWindowDirective
   ],
-  exports:[InitialCasePipe, ScrollWindowDirective]
+  exports:[InitialCasePipe] //ScrollWindowDirective]
 })
 export class DirectivesModule {}

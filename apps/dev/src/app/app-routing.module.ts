@@ -9,6 +9,9 @@ export const routes:Routes=[
         path:"auth",component:MainComponent,canActivate: [AuthGuardGuard] , children:[           
             {
                 path:"profile" ,loadChildren: ()=>import("@developers/profile/page").then(m=> m.ProfilePageModule)
+            },
+            {
+                
             }
         ] 
     },

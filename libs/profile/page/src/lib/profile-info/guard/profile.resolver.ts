@@ -11,7 +11,7 @@ import { catchError, map, Observable, of, take, tap } from 'rxjs';
 import { ProfilePageService } from '../../profile-page/profile-page.service';
 
 @Injectable()
-export class NameEditResolver implements Resolve<any> {
+export class ProfileResolver implements Resolve<any> {
   constructor(private store: Store){}
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot):Observable<any>{
     return this.store.pipe(select(selectProfile), take(1));

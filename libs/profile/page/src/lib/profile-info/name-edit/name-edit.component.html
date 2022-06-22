@@ -1,12 +1,13 @@
 <div class="container">
     <div class="container-0">
-        <developers-back-button [title]="'Name'" [routeTo]="[routeTo]" [queryParams]="queryParams"></developers-back-button>
+        <developers-back-button [title]="'Name'" [routeTo]="[routeTo]" [queryParams]="queryParams">
+        </developers-back-button>
     </div>
     <div class="container-1">
         <div class="roboto info">
             Changes to your name will be reflected across your teamashii account.
         </div>
-        <form [formGroup]="name" fxLayout="column" >
+        <form [formGroup]="name" fxLayout="column">
             <mat-form-field appearance="outline" fxFlex color="maggie">
                 <mat-label>First name</mat-label>
                 <input matInput type="text" formControlName="firstName">
@@ -15,30 +16,25 @@
                 <mat-label>Last name</mat-label>
                 <input matInput type="text" formControlName="lastName">
             </mat-form-field>
-            <div fxLayout="row">
-                <div fxFlex="70">
+            <div class="row-view">
+                <div class="item-view">
                     <developers-who-can-see-your-info [appName]="appName"></developers-who-can-see-your-info>
-                 </div>
+                </div>
             </div>
-           
-            <div fxLayout="row" fxLayoutAlign="end end" fxFlex fxLayoutGap="5px">
-                <button mat-stroked-button (click)="cancel()" >Cancel</button>
-                
-                <button [disabled]="submitting" [class.disabled]="submitting" class="save"  mat-stroked-button color="primary" (click)="rename()" >Save</button>
 
-                <svg *progressAware="{onShow: onProgressShow.bind(this),onHide: onProgressHide.bind(this), progressId: 'profile-page'}"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="progress img lds-eclipse" style="background: none;">
-                        <path stroke="none" d="M10 50A40 40 0 0 0 90 50A40 45 0 0 1 10 50" fill="#5eccb2"
-                            transform="rotate(354 49.9999 52.4999)">
-                                <animateTransform attributeName="transform" type="rotate" calcMode="linear" values="0 50 52.5;360 50 52.5"
-                                    keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite"></animateTransform>
-                        </path>
-                </svg>
-               
-                <ng-template #loading>Loading...</ng-template>
+            <div fxLayout="row" fxLayoutAlign="end end" fxFlex fxLayoutGap="5px">
+                <button mat-stroked-button (click)="cancel()">Cancel</button>
+
+                <button [disabled]="submitting" [class.disabled]="submitting" class="save" mat-stroked-button
+                    color="primary" (click)="rename()">Save</button>
+                <ng-container
+                    *progressBarAware="{onShow: onProgressShow.bind(this),onHide: onProgressHide.bind(this), progressId: 'profile-page'}">
+                    <!-- <developers-spinner></developers-spinner> -->
+                    
+                </ng-container>
+
             </div>
         </form>
 
-    </div> 
+    </div>
 </div>

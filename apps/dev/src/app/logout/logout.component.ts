@@ -5,7 +5,7 @@ import { MatButton } from '@angular/material/button';
 import { logoutAction } from '@developers/models';
 import { selectProfile } from '@developers/profile/data-access';
 import { select, Store } from '@ngrx/store';
-import { filter, map, mapTo, merge, Observable, of } from 'rxjs';
+import { filter, mapTo, merge } from 'rxjs';
 
 @Component({
   selector: 'developers-logout',

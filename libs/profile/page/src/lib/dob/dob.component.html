@@ -1,0 +1,66 @@
+<div class="container-0">
+    <div class="backspace">
+        <developers-back-button [title]="'Birthday'" [routeTo]="[routeTo]" [queryParams]="queryParams"></developers-back-button>
+    </div>
+</div>
+<div class="container-1">
+    <mat-card class="none roboto info">
+        Your birthday may be used for account security and personalization across teamashii. If this teamashii Account is for a business or organization, use the birthday of the person who manages the account.
+    </mat-card>
+    <mat-card>
+        <form  [formGroup]="fg">
+            <div fxLayout="column" fxLayoutGap="3px">
+                <!-- <div fxLayout="row" class="custom-error"  fxLayoutAlign="space-between end" >
+                    <mat-form-field fxFlex="50" appearance="outline" color="maggie" >
+                        <mat-label>Month</mat-label>
+                        <mat-select formControlName="month">
+                            <mat-option *ngFor="let month of months" [value]="month.value">
+                                {{month.name}}
+                            </mat-option>
+                        </mat-select>                   
+                    </mat-form-field>    
+                    <mat-form-field  fxFlex="15" appearance="outline" color="maggie" >
+                        <mat-label>Day</mat-label>
+                        <input matInput type="number" formControlName="day">
+                    </mat-form-field>    
+                    <mat-form-field fxFlex="15" appearance="outline" color="maggie" >
+                        <mat-label>Year</mat-label>
+                        <input type="number" matInput type="text" formControlName="year">
+                    </mat-form-field> 
+                </div> -->
+                <h6 fxFlex class="heading">
+                    UPDATE BIRTHDAY
+                </h6>
+                <mat-form-field  appearance="outline" color="maggie">
+                    <mat-label>Birthday</mat-label>
+                    <input matInput [matDatepicker]="picker"  formControlName="date">
+                    <mat-hint>MM/DD/YYYY</mat-hint>
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker (monthSelected)="setMonthAndYear($event, picker)" #picker></mat-datepicker>
+                    <mat-error>Date is invalid</mat-error>
+                </mat-form-field>
+
+                <div fxLayout="row" fxLayoutAlign="end end" fxLayoutGap="5px" >
+                    <button mat-stroked-button (click)="cancel()"> Cancel</button>
+                    <button mat-stroked-button class="save" color="primary" (click)="updateDOB()">Save</button>
+                    <ng-container
+                    *progressBarAware="{onShow: onProgressShow.bind(this),onHide: onProgressHide.bind(this), progressId: 'profile-page'}">
+                    <!-- <developers-spinner></developers-spinner> -->
+                    
+                    </ng-container>
+                </div>
+               
+                <!-- <div class="error">
+                    <mat-error *ngIf="fg.controls['date'].hasError('required',['day']) || fg.controls['date'].hasError('required',['month']) || fg.controls['date'].hasError('required',['year']) "> * please select date</mat-error>
+                </div> -->
+            </div>
+
+
+            
+
+        </form>
+       
+        
+    </mat-card>
+</div>
+

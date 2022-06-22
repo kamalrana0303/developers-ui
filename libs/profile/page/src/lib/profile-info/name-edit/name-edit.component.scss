@@ -3,14 +3,7 @@
     justify-content: center;
     align-items: center;
 
-    .progress{
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        width: 50px;
-        height: 50px;
-        transform: translate(-50%, -50%);
-      }
+    
       .disabled{
           background-color: #dadce0;
       }
@@ -35,6 +28,20 @@
        
     }
     
+}
+.row-view{
+    display: flex;
+    flex-direction: row;
+}
+@media(max-width: 720px){
+  .item-view{
+    max-width: 100%;
+  }
+}
+@media(min-width: 720px){
+    .item-view{
+        max-width: 70%;
+    }
 }
 
 @media (max-width: 820px) {

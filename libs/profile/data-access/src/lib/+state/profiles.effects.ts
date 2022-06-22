@@ -13,6 +13,43 @@ import * as ProfilesFeature from './reducers/profiles.reducer';
 
 @Injectable()
 export class ProfilesEffects {
+
+  gender$ = createEffect(()=> {
+    return this.actions$.pipe(
+      ofType(ProfilesActions.updateGender),
+      fetch({
+        run: (action)=> {
+          return this.profileService.gender({cpId: action.cpId, gender: action.gender}).pipe(map(res=> {
+            return ProfilesActions.loadProfilesSuccess({profile: res})
+          }))
+        },
+        onError: (action, error)=> {
+          if(error.status ===401){
+            this.store.dispatch(tokenAction.tokenExpired())
+          }
+          return ProfilesActions.profilesFailure(error);
+        }
+      })
+    )
+  })
+  dob$ = createEffect(()=> {
+    return this.actions$.pipe(
+      ofType(ProfilesActions.updateDob),
+      fetch({
+        run: (action)=> {
+          return this.profileService.dob({cpId:action.cpId, date: action.dob}).pipe(map(res=> {
+            return ProfilesActions.loadProfilesSuccess({profile: res})
+          }))
+        },
+        onError: (action, error)=> {
+          if(error.status === 401){
+            this.store.dispatch(tokenAction.tokenExpired())
+          }
+          return ProfilesActions.profilesFailure(error);
+        }
+      })
+    )
+  })
   rename$ = createEffect(()=> {
     return this.actions$.pipe(
       ofType(ProfilesActions.renameProfile),

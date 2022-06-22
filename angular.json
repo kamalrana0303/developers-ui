@@ -12,6 +12,7 @@
     "profile-data-access": "libs/profile/data-access",
     "profile-page": "libs/profile/page",
     "progress-bar": "libs/progress-bar",
-    "ui-styles": "libs/ui/styles"
+    "ui-styles": "libs/ui/styles",
+    "your-address": "libs/your-address"
   }
 }

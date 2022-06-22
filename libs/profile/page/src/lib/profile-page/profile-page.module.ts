@@ -14,6 +14,7 @@ const routes: Routes= [
     CommonModule,
     MatTabsModule,
     ProfileInfoModule,
+    
     RouterModule.forChild(routes),
     ProfileDataAccessModule
   ],

@@ -1,3 +1,13 @@
+<ng-container *ngIf="loading$ | async">
+    <mat-progress-bar cdkOverlayOrigin 
+    #originOverlay="cdkOverlayOrigin" mode="indeterminate" color="warn"></mat-progress-bar>
+    <ng-template cdkConnectedOverlay 
+    cdkConnectedOverlayHasBackdrop
+    [cdkConnectedOverlayOrigin]="originOverlay" 
+    [cdkConnectedOverlayOpen]="true"
+    [cdkConnectedOverlayOffsetY]="0">
+    </ng-template>
+</ng-container>
 <header> 
     <developers-header></developers-header>
 </header>

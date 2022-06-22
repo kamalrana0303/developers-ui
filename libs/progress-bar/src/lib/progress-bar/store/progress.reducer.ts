@@ -17,7 +17,6 @@ export const progressReducer = createReducer(
             ...state, report: {...state.report, [action.id]: true}
         }
     }),
-  
     on(progressAction.hideAction,  (state, action)=>({...state, report: {...state.report,[action.id]:false}}))  
 )
 

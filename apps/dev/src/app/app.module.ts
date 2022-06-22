@@ -34,6 +34,7 @@ import { PortalModule } from '@angular/cdk/portal';
 import { PortalBridgeService } from './data-access/portal-bridge.service';
 import {MatProgressBarModule} from "@angular/material/progress-bar"
 import { ProgressBarModule } from '@developers/progress-bar';
+import { ModelsModule } from '@developers/models';
 
 
 const libConfigModule=[
@@ -79,6 +80,9 @@ const material: any[]=[
     DirectivesModule,
     DataAccessModule,
     ProgressBarModule,
+    ModelsModule,
+    OverlayModule,
+    A11yModule,
     material,
     libConfigModule
   ],

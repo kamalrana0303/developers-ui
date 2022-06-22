@@ -21,7 +21,14 @@ export class ProfileInfoComponent implements OnInit {
   }
 
   name(){
-    this.router.navigate(['/auth/profile/name'], {queryParams: {'continue': "/auth/profile"}})
+    this.router.navigate(['/auth/profile/name'], {queryParams: {'continue': "/auth/profile"}});
+  }
+
+  dob(){
+    this.router.navigate(['/auth/profile/birthday'], {queryParams: {'continue': '/auth/profile'}});
+  }
+  gender(){
+    this.router.navigate(['/auth/profile/gender'], {queryParams: {'continue': '/auth/profile'}});
   }
 
 }

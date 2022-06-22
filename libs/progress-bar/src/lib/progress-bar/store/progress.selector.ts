@@ -7,7 +7,7 @@ export const selectIsProgressing= createSelector(selectProgress, (state)=> state
 export const showProgress=(props:any)=>{
 
     return createSelector(selectIsProgressing, (state: { [x: string]: any; })=>{
-      
+     
         return state[props.progressId]
     } )
 }

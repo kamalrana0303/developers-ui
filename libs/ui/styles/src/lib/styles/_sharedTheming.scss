@@ -93,6 +93,14 @@
     }
     $theme-background-color: mat-color($amber-color-pallete, 50, 100);//mat-color($amber-color-pallete, 50);
     $theme-h1-color: mat-color($amber-color-pallete, 200, 200);
+    .mat-snack-bar-container {
+        color: #323232;
+        background: mat-color($amber-color-pallete, 200,100);
+        box-shadow: 0px 3px 5px -1px rgb(0 0 0 / 20%), 0px 6px 10px 0px rgb(0 0 0 / 14%), 0px 1px 18px 0px rgb(0 0 0 / 12%);
+    }
+    .mat-simple-snackbar-action {
+        color: #323232;
+    }
     developers-auth-page{
         .view-box{  
             background-color:  $theme-background-color;//mat-color($amber-color-pallete, 200, 100);
@@ -138,16 +146,25 @@
        
     }
 
-    developers-name-edit{
+    developers-name-edit, developers-dob{
         .mat-storked-button:hover{
             color: mat-color($blue-color-pallete, 700);
         }
         .mat-stroked-button{
             color: mat-color($blue-color-pallete, 900);
         }
+        .custom-error{
+            .mat-form-field-appearance-outline .mat-form-field-wrapper{
+                margin-bottom: 0px !important;
+            }
+            .mat-form-field-wrapper{
+             padding-bottom: 0px !important
+            }
+        }
         
         mat-form-field.mat-form-field.mat-maggie{
             // mat-label normal state style
+            
             .mat-form-field-label {
                 color: mat-color($black-color-pallete, 900);
             }

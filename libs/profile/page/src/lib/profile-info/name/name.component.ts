@@ -23,7 +23,6 @@ export class NameComponent implements OnInit {
      if(name?.lastName){
       derivedName = ( derivedName && derivedName.trim().length !=0 )? derivedName + " "+ name.lastName : name.lastName;
      }
-
      return derivedName.trim().length == 0 ? 'press edit to change your name': derivedName;
    }))
   
@@ -38,7 +37,6 @@ export class NameComponent implements OnInit {
 
   
   perform(){
-   
     this.router.navigate(["auth", "profile", "name", "edit"], {queryParams: {continue: "/auth/profile"}})
   }
 
