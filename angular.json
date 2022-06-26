@@ -1,16 +1,18 @@
 {
   "version": 2,
   "projects": {
-    "account-data-access": "libs/account/data-access",
-    "account-your-account": "libs/account/your-account",
+    "directives": "libs/directives",
+    "oauth-auth-code": "libs/oauth/auth-code",
+    "oauth-data-access": "libs/oauth/data-access",
     "auth-auth-page": "libs/auth/auth-page",
     "auth-data-access": "libs/auth/data-access",
     "dev": "apps/dev",
     "dev-e2e": "apps/dev-e2e",
-    "directives": "libs/directives",
+   
+
     "models": "libs/models",
-    "oauth-auth-code": "libs/oauth/auth-code",
-    "oauth-data-access": "libs/oauth/data-access",
+    "account-data-access": "libs/account/data-access",
+    "account-your-account": "libs/account/your-account",
     "profile-data-access": "libs/profile/data-access",
     "profile-page": "libs/profile/page",
     "progress-bar": "libs/progress-bar",

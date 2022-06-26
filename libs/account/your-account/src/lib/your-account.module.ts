@@ -8,7 +8,8 @@ import { RouterModule } from '@angular/router';
 @NgModule({
   imports: [
     CommonModule, 
-    PageModule,DataAccessModule,
+    PageModule,
+    DataAccessModule,
     RouterModule.forChild([
       {
         path:"", loadChildren: ()=> import("./page/page.module").then(m=> m.PageModule)

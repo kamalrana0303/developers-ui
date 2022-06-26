@@ -12,8 +12,8 @@ import { PageComponent } from './page/page.component';
   ],
   imports: [
     CommonModule,
-    PageRoutingModule,
-    DataAccessModule
+    DataAccessModule,
+    PageRoutingModule
   ],
  
 })
