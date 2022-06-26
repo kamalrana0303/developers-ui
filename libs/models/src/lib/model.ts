@@ -113,8 +113,17 @@ export interface ShippingAddress{
   altContactNo:string | null| undefined;
 }
 
+export interface MiniProfile{
+  profileId: string|null | undefined;
+}
+export interface MiniAddress{
+  addressId: string|null|undefined;
+}
+
 export interface Account{
+  accountId: string |null|undefined;
+  userId: string |null | undefined;
   email: string |null | undefined;
-  profile: Profile | null| undefined;
-  address: Address | null| undefined;
+  profile: MiniProfile |null|undefined;
+  address: MiniAddress |null|undefined;
 }

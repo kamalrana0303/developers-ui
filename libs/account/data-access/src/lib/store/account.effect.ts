@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { tokenAction } from "@developers/models";
+import { Account, tokenAction } from "@developers/models";
 import { init } from "@developers/profile/data-access";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { Store } from "@ngrx/store";
@@ -16,10 +16,11 @@ export class AccountEffect{
             ofType(accountAction.loadAccount),
             fetch({
                 run: (action)=> {
-                    return this.accountService.getAccount().pipe(map(account=> {
+                    return this.accountService.getAccount().pipe(map((account:Account)=> {
                         if(account.profile && account.profile.profileId){
                             this.store.dispatch(init({profileId: account.profile.profileId}))
                         }
+                        alert(JSON.stringify(account))
                         return accountAction.onSuccess({account: account})
                     }))
                 },

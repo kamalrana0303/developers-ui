@@ -13,7 +13,7 @@ export const initialState: AccountState = {
 const accountReducer = createReducer(
     initialState,
     on(onSuccess, (state, {account})=> {
-        return ({state, account})
+        return ({...state,account})
     })
 )
 
