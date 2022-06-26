@@ -2,7 +2,9 @@ import { Error, Profile } from '@developers/models';
 import { createAction, props } from '@ngrx/store';
 import { ProfilesEntity } from './profiles.models';
 
-export const init = createAction('[Profiles Page] Init');
+export const init = createAction('[Profiles Page] Init',
+  props<{profileId:string}> ()
+);
 
 export const loadProfilesSuccess = createAction(
   '[Profiles/API] Load Profiles Success',

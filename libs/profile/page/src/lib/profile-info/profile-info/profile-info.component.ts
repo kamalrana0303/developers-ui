@@ -18,18 +18,18 @@ export class ProfileInfoComponent implements OnInit {
   constructor(private store: Store, private router: Router) { }
 
   ngOnInit(): void {
-    this.store.dispatch(init())
+    
   }
 
   name(){
-    this.router.navigate(['/auth/profile/name'], {queryParams: {'continue': "/auth/profile"}});
+    this.router.navigate(['/auth/home/name'], {queryParams: {'continue': "/auth/home"}});
   }
 
   dob(){
-    this.router.navigate(['/auth/profile/birthday'], {queryParams: {'continue': '/auth/profile'}});
+    this.router.navigate(['/auth/home/birthday'], {queryParams: {'continue': '/auth/home'}});
   }
   gender(){
-    this.router.navigate(['/auth/profile/gender'], {queryParams: {'continue': '/auth/profile'}});
+    this.router.navigate(['/auth/home/gender'], {queryParams: {'continue': '/auth/home'}});
   }
 
 }

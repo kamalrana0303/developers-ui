@@ -4,17 +4,16 @@ import { ActionReducerMap } from "@ngrx/store"
 import { reducer } from "./account.reducer";
 
 export interface State{
-    accountInfo: accountReducer.AccountState
+    _state: accountReducer.AccountState
 }
+
 export const reducers: ActionReducerMap<State> = {
-    accountInfo :  reducer
+    _state :  reducer
 }
 
 export const FEATURE_ACCOUNT = "feature_account"
 const environment= {production: false}
-
 export const metaReducers : MetaReducer<State> []= environment.production?[]: []
-
 export const selectFeature= createFeatureSelector<State>(FEATURE_ACCOUNT);
-export const selectAccountInfo= createSelector(selectFeature, (state)=> state?.accountInfo);
-export const selectAccount= createSelector(selectAccountInfo, (state)=> state?.account);
+export const selectAccountState= createSelector(selectFeature, (state)=> state?._state);
+export const selectAccount= createSelector(selectAccountState, (state)=> state?.account);

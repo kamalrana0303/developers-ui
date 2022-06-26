@@ -19,7 +19,7 @@ export class ProfilesEffects {
       ofType(ProfilesActions.updateGender),
       fetch({
         run: (action)=> {
-          return this.profileService.gender({cpId: action.profileId, gender: action.gender}).pipe(map(res=> {
+          return this.profileService.gender({profileId: action.profileId, gender: action.gender}).pipe(map(res=> {
             return ProfilesActions.loadProfilesSuccess({profile: res})
           }))
         },
@@ -37,7 +37,7 @@ export class ProfilesEffects {
       ofType(ProfilesActions.updateDob),
       fetch({
         run: (action)=> {
-          return this.profileService.dob({cpId:action.profileId, date: action.dob}).pipe(map(res=> {
+          return this.profileService.dob({profileId:action.profileId, date: action.dob}).pipe(map(res=> {
             return ProfilesActions.loadProfilesSuccess({profile: res})
           }))
         },
@@ -74,7 +74,7 @@ export class ProfilesEffects {
       fetch({
         run: (action) => {
       
-          return this.profileService.getUserProfile().pipe(map(res=> {
+          return this.profileService.getUserProfile(action.profileId).pipe(map(res=> {
           
             return ProfilesActions.loadProfilesSuccess({profile: res});
           }))

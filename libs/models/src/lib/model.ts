@@ -83,6 +83,7 @@ export enum GENDER{
 }
 
 export interface Address{
+  addressId:string;
   billingAddresses: BillingAddress[] |null| undefined;
   shippingAddresses: ShippingAddress[] |null| undefined;
 }

@@ -11,7 +11,7 @@ import { CookieService } from 'ngx-cookie-service';
   imports: [
     CommonModule,
     StoreModule.forFeature(
-      fromProfiles.FEATURE,
+      fromProfiles.FEATURE_PROFILE,
       fromProfiles.reducers
     ),
     EffectsModule.forFeature([ProfilesEffects])

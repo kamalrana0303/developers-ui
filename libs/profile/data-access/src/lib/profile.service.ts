@@ -13,22 +13,22 @@ import { map, Observable, tap } from "rxjs";
 export class ProfileService{
     constructor(@Optional() private config: ConfigurationModel, private http: HttpClient, @Inject('authService') private authService: AuthServiceItf, @Inject("headerService") private headerService: HeaderServiceItf){
     }
-    public getUserProfile():Observable<Profile>{
-        return this.http.get<Profile>(this.config.ecomClientBaseUrl+"/profile", this.headerService.authHeader() )
+    public getUserProfile(profileId: string):Observable<Profile>{
+        return this.http.get<Profile>(this.config.ecomClientBaseUrl+"/profile/"+profileId, this.headerService.authHeader() )
     }
 
     public rename(cpId:string, firstName: string, lastName: string):Observable<Profile>{
         let header:{headers: HttpHeaders | {[header: string]: string | string[]} | any}=this.headerService.authHeader();
-        return this.http.patch<Profile>(this.config.ecomClientBaseUrl + "/profile/name?cpId="+cpId+"&firstName="+firstName+"&lastName="+lastName , null, this.headerService.authHeader());
+        return this.http.patch<Profile>(this.config.ecomClientBaseUrl + "/profile/name?profileId="+cpId+"&firstName="+firstName+"&lastName="+lastName , null, this.headerService.authHeader());
     }
 
-    public dob(x:{cpId:string, date: any}):Observable<Profile> {
+    public dob(x:{profileId:string, date: any}):Observable<Profile> {
         
         let header: {headers: HttpHeaders | {[header:string]: string | string[]} | any}= this.headerService.authHeader();
         return this.http.patch<Profile> (this.config.ecomClientBaseUrl + "/profile/birthday" ,          x,this.headerService.authHeader())
     }
 
-    public gender(x: {cpId: string, gender: any}):Observable<Profile> {
+    public gender(x: {profileId: string, gender: any}):Observable<Profile> {
         return this.http.patch<Profile> (this.config.ecomClientBaseUrl + "/profile/gender", x, this.headerService.authHeader());
     }
 }

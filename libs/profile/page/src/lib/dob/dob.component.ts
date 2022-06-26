@@ -80,12 +80,13 @@ export class DobComponent implements OnInit {
   updateDOB(){
     if(this.fg.valid){
       let dob=moment(this.fg.value.date).format("YYYY-MM-DD")
-      this.store.dispatch(updateDob({profileId:this.profile?.cpId, dob: dob}))
+     
+      this.store.dispatch(updateDob({profileId:(this.profile)?.profileId, dob: dob}))
     }
   }
 
   cancel(){
-    this.router.navigate(['/auth/profile'])
+    this.router.navigate(['/auth/home'])
   }
 
   onProgressShow(){

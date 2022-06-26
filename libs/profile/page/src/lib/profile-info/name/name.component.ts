@@ -37,7 +37,7 @@ export class NameComponent implements OnInit {
 
   
   perform(){
-    this.router.navigate(["auth", "profile", "name", "edit"], {queryParams: {continue: "/auth/profile"}})
+    this.router.navigate(["auth", "home", "name", "edit"], {queryParams: {continue: "/auth/home"}})
   }
 
 }
