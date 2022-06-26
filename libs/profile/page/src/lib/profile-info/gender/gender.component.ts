@@ -26,7 +26,7 @@ export class GenderComponent implements OnInit {
 
   selectGender(event:any){
     this.gender = event.value;
-    this.store.dispatch(updateGender({cpId: this.profile.cpId, gender: this.gender}))
+    this.store.dispatch(updateGender({profileId: this.profile.cpId, gender: this.gender}))
   }
 
   onProgressShow(){

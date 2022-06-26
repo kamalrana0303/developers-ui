@@ -2,7 +2,7 @@
     cdkOverlayOrigin 
     #originOverlay="cdkOverlayOrigin"
     [class.drop-down-input-active]="$showPanel | async">
-    {{($profile| async)?.email|initialCase}}
+    {{($account| async)?.email|initialCase}}
 </button>
 <ng-template cdkConnectedOverlay 
     cdkConnectedOverlayHasBackdrop
@@ -16,12 +16,12 @@
         </div>
         <div class="container">
             <div id="name">
-                {{($profile | async)?.email | initialCase}}
+                {{($account | async)?.email | initialCase}}
             </div>
         </div>
         
         <div class="wordbreak item" >
-           {{($profile | async)?.email}}
+           {{($account | async)?.email}}
         </div>
         <div  class="item">
             <button  mat-stroked-button (click)="attemptToLogout()">Logout</button>

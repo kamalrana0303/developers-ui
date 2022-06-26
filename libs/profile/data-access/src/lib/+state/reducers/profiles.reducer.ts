@@ -13,7 +13,6 @@ export const initialState: State = {
   error: null
 }
 
-
 const profilesReducer = createReducer(
   initialState,
   on(ProfilesActions.init, (state) => ({

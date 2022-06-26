@@ -144,7 +144,7 @@ export class AuthEffects {
       ofType(loginAction.loginStatus),
       tap((loggedinStatus)=> {
         if(loggedinStatus.loggedIn){
-          this.router.navigate(["auth/profile"])
+          this.router.navigate(["auth/home"])
         }
       })
     )
@@ -190,5 +190,4 @@ export class AuthEffects {
      })
   ))
   //fail to load pkce
-
 }

@@ -1,0 +1,1 @@
+export * as fromYourAccount from "./lib/page/page.module";

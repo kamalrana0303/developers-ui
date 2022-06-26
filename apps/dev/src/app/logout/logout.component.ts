@@ -2,10 +2,11 @@ import { FocusMonitor } from '@angular/cdk/a11y';
 import { CdkConnectedOverlay } from '@angular/cdk/overlay';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MatButton } from '@angular/material/button';
+import { accountSelector } from '@developers/account/data-access';
 import { logoutAction } from '@developers/models';
 import { selectProfile } from '@developers/profile/data-access';
 import { select, Store } from '@ngrx/store';
-import { filter, mapTo, merge } from 'rxjs';
+import { filter, mapTo, merge, tap } from 'rxjs';
 
 @Component({
   selector: 'developers-logout',
@@ -14,7 +15,7 @@ import { filter, mapTo, merge } from 'rxjs';
 })
 export class LogoutComponent implements OnInit {
   $profile=this.store.pipe(select(selectProfile));
-  
+  $account = this.store.pipe(select(accountSelector.selectAccount))
   @ViewChild(MatButton, {read: ElementRef, static:true})
   private buttonEl: ElementRef | any;
   @ViewChild(CdkConnectedOverlay, {static: true})

@@ -4,13 +4,12 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import * as fromProfiles from './+state/reducers/index';
 import { ProfilesEffects } from './+state/profiles.effects';
-import { ConfigurationModel, ModelsModule } from '@developers/models';
+import { ConfigurationModel } from '@developers/models';
 import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   imports: [
     CommonModule,
-  
     StoreModule.forFeature(
       fromProfiles.FEATURE,
       fromProfiles.reducers

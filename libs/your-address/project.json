@@ -1,21 +1,24 @@
 {
+  "projectType": "library",
   "root": "libs/your-address",
   "sourceRoot": "libs/your-address/src",
-  "projectType": "library",
+  "prefix": "developers",
   "targets": {
-    "lint": {
-      "executor": "@nrwl/linter:eslint",
-      "outputs": ["{options.outputFile}"],
-      "options": {
-        "lintFilePatterns": ["libs/your-address/**/*.ts"]
-      }
-    },
     "test": {
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/libs/your-address"],
       "options": {
         "jestConfig": "libs/your-address/jest.config.js",
         "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/your-address/src/**/*.ts",
+          "libs/your-address/src/**/*.html"
+        ]
       }
     }
   },

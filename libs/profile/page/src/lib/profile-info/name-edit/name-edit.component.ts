@@ -45,7 +45,7 @@ export class NameEditComponent implements OnInit {
   rename(){
     if((this.name as FormGroup).valid){
       this.store.dispatch(renameProfile({
-        cpId: (this.activated.snapshot.data['profileName'] as Profile)?.cpId,
+        profileId: (this.activated.snapshot.data['profileName'] as Profile)?.profileId,
         firstName: this.name.value.firstName, 
         lastName: this.name.value.lastName
       }))

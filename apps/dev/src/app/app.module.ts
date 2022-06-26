@@ -35,11 +35,13 @@ import { PortalBridgeService } from './data-access/portal-bridge.service';
 import {MatProgressBarModule} from "@angular/material/progress-bar"
 import { ProgressBarModule } from '@developers/progress-bar';
 import { ModelsModule } from '@developers/models';
-
-
+import { fromYourAccount } from '@developers/account/your-account';
+import {fromAccountModule} from "@developers/account/data-access";
 const libConfigModule=[
   ProfilePageModule.forRoot(environment as any),
-  ProfileDataAccessModule.forRoot(environment as any)
+  ProfileDataAccessModule.forRoot(environment as any),
+  fromYourAccount.PageModule.forRoot(environment as any),
+  fromAccountModule.DataAccessModule.forRoot(environment as any)
 ]
 
 
@@ -57,7 +59,7 @@ const material: any[]=[
   MatFormFieldModule,
   MatInputModule,
   MatDialogModule,
-  MatProgressBarModule
+  MatProgressBarModule,
 ]
 
 @NgModule({
@@ -70,7 +72,8 @@ const material: any[]=[
     BucketComponent,
     LogoutPromptComponent,
     LoginComponent,
-    LogoutComponent
+    LogoutComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -84,7 +87,7 @@ const material: any[]=[
     OverlayModule,
     A11yModule,
     material,
-    libConfigModule
+    libConfigModule,
   ],
   
   bootstrap: [AppComponent],

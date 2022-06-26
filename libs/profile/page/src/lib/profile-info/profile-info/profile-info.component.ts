@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { accountSelector } from '@developers/account/data-access';
 import {  init, selectFirstName, selectLastName, selectProfile, selectProfileName, State } from '@developers/profile/data-access';
 import { select, Store } from '@ngrx/store';
-import { environment } from 'apps/dev/src/environments/environment';
-import { map, tap } from 'rxjs';
+
 
 @Component({
   selector: 'developers-profile-info',
@@ -12,6 +12,7 @@ import { map, tap } from 'rxjs';
 })
 export class ProfileInfoComponent implements OnInit {
   personalInfo$ = this.store.pipe(select(selectProfile));
+  account$=this.store.pipe(select(accountSelector.selectAccount))
   firstName$= this.store.pipe(select(selectFirstName));
   lastName$= this.store.pipe(select(selectLastName));
   constructor(private store: Store, private router: Router) { }

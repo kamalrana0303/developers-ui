@@ -6,20 +6,16 @@ import { BucketComponent } from "./bucket/bucket.component";
 import { AuthGuardGuard } from "./guard/auth-guard.guard";
 export const routes:Routes=[ 
     {
-        path:"auth",component:MainComponent,canActivate: [AuthGuardGuard] , children:[           
+        path:"auth",component:MainComponent,canActivate: [AuthGuardGuard] ,
+         children:[           
             {
-                path:"profile" ,loadChildren: ()=>import("@developers/profile/page").then(m=> m.ProfilePageModule)
-            },
-            {
-                
+               path:"home" ,loadChildren: ()=>import("@developers/account/your-account").then(m=> m.fromYourAccount.PageModule)
             }
         ] 
     },
     {
         path:"token", component: BucketComponent
-    },
-    
-
+    }
     
 ]
 

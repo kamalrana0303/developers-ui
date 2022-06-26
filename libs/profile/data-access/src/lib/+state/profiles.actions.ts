@@ -11,17 +11,17 @@ export const loadProfilesSuccess = createAction(
 
 export const renameProfile= createAction(
   '[Profiles/API] Attempt Rename',
-  props<{cpId:string,firstName: string,lastName:string}>()
+  props<{profileId:any,firstName: string,lastName:string}>()
 )
 
 export const updateDob = createAction(
   '[Profiles/API] Update DOB',
-  props<{cpId: string, dob: any}>()
+  props<{profileId: string, dob: any}>()
 )
 
 export const updateGender = createAction(
   '[Profiles/API] Update Gender',
-  props<{cpId:string, gender: any}>()
+  props<{profileId:string, gender: any}>()
 )
 
 export const profilesFailure = createAction(

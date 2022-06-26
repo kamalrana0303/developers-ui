@@ -80,7 +80,7 @@ export class DobComponent implements OnInit {
   updateDOB(){
     if(this.fg.valid){
       let dob=moment(this.fg.value.date).format("YYYY-MM-DD")
-      this.store.dispatch(updateDob({cpId:this.profile?.cpId, dob: dob}))
+      this.store.dispatch(updateDob({profileId:this.profile?.cpId, dob: dob}))
     }
   }
 

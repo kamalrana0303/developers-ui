@@ -57,33 +57,63 @@ export interface Token{
 }
 
 export interface Name{
-  firstName: string;
-  lastName: string;
-  displayName:string;
-  nickName: string;
+  firstName: string | null| undefined;
+  lastName: string | null| undefined;
+  displayName:string | null| undefined;
+  nickName: string | null| undefined;
 }
 
 export interface Profile{
-  name: Name;
-  email: string;
-  cpId: string;
-  gender: string;
-  billingAddresses: []
-  dob: null
-  shippingAddresses: []
+  name: Name | null| undefined;
+  profileId: string |null| undefined;
+  gender: string | null| undefined; 
+  dob: any;
+  address: Address |null| undefined;
 }
 
 export interface NameRM{
-  firstName: string;
+  firstName: string ;
   lastName: string;
-  cpId: string;
-}
-
-export enum Operations{
-  EDIT
+  profileId: string;
 }
 
 export enum GENDER{
   MALE,
   FEMALE
+}
+
+export interface Address{
+  billingAddresses: BillingAddress[] |null| undefined;
+  shippingAddresses: ShippingAddress[] |null| undefined;
+}
+
+export interface BillingAddress{
+  name:string | null| undefined;
+  city:string | null| undefined;
+  state:string | null| undefined;
+  address:string | null| undefined;
+  landmark:string | null| undefined;
+  pincode:string | null| undefined;
+  addressId:string | null| undefined;
+  gst:string | null| undefined;
+  contactNo:string | null| undefined;
+  altContactNo:string | null| undefined;
+}
+
+export interface ShippingAddress{
+  name:string | null | undefined;
+  city:string | null| undefined;
+  state:string | null| undefined;
+  address:string | null| undefined;
+  landmark:string | null| undefined;
+  pincode:string | null| undefined;
+  addressId:string | null| undefined;
+  contactNo:string | null| undefined;
+  altContactNo:string | null| undefined;
+}
+
+export interface Account{
+  email: string |null | undefined;
+  profile: Profile | null| undefined;
+  address: Address | null| undefined;
 }

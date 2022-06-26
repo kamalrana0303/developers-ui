@@ -1,0 +1,26 @@
+{
+  "projectType": "library",
+  "root": "libs/account/your-account",
+  "sourceRoot": "libs/account/your-account/src",
+  "prefix": "developers",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/account/your-account"],
+      "options": {
+        "jestConfig": "libs/account/your-account/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/account/your-account/src/**/*.ts",
+          "libs/account/your-account/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}
