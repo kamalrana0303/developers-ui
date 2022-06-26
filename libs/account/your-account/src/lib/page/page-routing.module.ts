@@ -9,7 +9,7 @@ const routes: Routes = [
   {
     path: "", component: PageComponent, children: [
       {
-        path: "", loadChildren: ()=> import("@developers/profile/page")
+        path: "", loadChildren: ()=> import("@developers/profile/page").then(m=>m.ProfilePageModule)
       }
     ]
   }

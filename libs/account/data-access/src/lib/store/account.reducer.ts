@@ -10,7 +10,7 @@ export const initialState: AccountState = {
     account: null
 }
 
-export const accountReducer = createReducer(
+const accountReducer = createReducer(
     initialState,
     on(onSuccess, (state, {account})=> {
         return ({state, account})

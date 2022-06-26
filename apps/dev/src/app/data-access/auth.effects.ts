@@ -144,7 +144,7 @@ export class AuthEffects {
       ofType(loginAction.loginStatus),
       tap((loggedinStatus)=> {
         if(loggedinStatus.loggedIn){
-          this.router.navigate(["auth/home"])
+          this.router.navigate(["/auth/home"])
         }
       })
     )

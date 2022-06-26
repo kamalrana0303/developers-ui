@@ -19,6 +19,7 @@ import { PageComponent } from './page/page.component';
 })
 export class PageModule {
   public static forRoot(config:ConfigurationModel): ModuleWithProviders<PageModule>{
+    
     return {
       ngModule: PageModule,
       providers: [{

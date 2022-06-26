@@ -1,12 +1,13 @@
 import { createFeatureSelector, createSelector, MetaReducer } from "@ngrx/store";
 import { accountReducer } from "@developers/account/data-access"
 import { ActionReducerMap } from "@ngrx/store"
+import { reducer } from "./account.reducer";
 
 export interface State{
     accountInfo: accountReducer.AccountState
 }
 export const reducers: ActionReducerMap<State> = {
-    accountInfo :  accountReducer?.reducer
+    accountInfo :  reducer
 }
 
 export const FEATURE_ACCOUNT = "feature_account"

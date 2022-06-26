@@ -13,7 +13,6 @@ import { FEATURE_ACCOUNT, reducers } from './store/account.selector';
   EffectsModule.forFeature([AccountEffect])
   ],
   providers: [AccountService],
-
 })
 export class DataAccessModule {
   public static forRoot(config:ConfigurationModel): ModuleWithProviders<DataAccessModule>{

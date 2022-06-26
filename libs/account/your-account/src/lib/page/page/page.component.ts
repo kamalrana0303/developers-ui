@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { accountSelector } from '@developers/account/data-access';
+import { accountAction, accountSelector } from '@developers/account/data-access';
 import { Store } from '@ngrx/store';
 
 @Component({
@@ -12,6 +12,7 @@ export class PageComponent implements OnInit {
   constructor(private store: Store) { }
 
   ngOnInit(): void {
+    this.store.dispatch(accountAction.loadAccount())
   }
 
 }

@@ -6,10 +6,15 @@ import { BucketComponent } from "./bucket/bucket.component";
 import { AuthGuardGuard } from "./guard/auth-guard.guard";
 export const routes:Routes=[ 
     {
+        path: "", component: BucketComponent
+    },
+    {
         path:"auth",component:MainComponent,canActivate: [AuthGuardGuard] ,
          children:[           
             {
-               path:"home" ,loadChildren: ()=>import("@developers/account/your-account").then(m=> m.fromYourAccount.PageModule)
+               path:"home" ,loadChildren: ()=>import("@developers/account/your-account").then(m=> {
+                   return m.PageModule
+               })
             }
         ] 
     },
