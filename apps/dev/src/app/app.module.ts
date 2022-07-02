@@ -35,13 +35,16 @@ import { PortalBridgeService } from './data-access/portal-bridge.service';
 import {MatProgressBarModule} from "@angular/material/progress-bar"
 import { ProgressBarModule } from '@developers/progress-bar';
 import { ModelsModule } from '@developers/models';
-import { fromYourAccount } from '@developers/account/your-account';
-import {fromAccountModule} from "@developers/account/data-access";
+import {fromAccountPage} from '@developers/account/your-account';
+import { AccountDataAccessModule } from '@developers/account/data-access';
+import { HomeDataAccessModule } from '@developers/home/data-access';
+
 const libConfigModule=[
   ProfilePageModule.forRoot(environment as any),
   ProfileDataAccessModule.forRoot(environment as any),
-  fromYourAccount.PageModule.forRoot(environment as any),
-  fromAccountModule.DataAccessModule.forRoot(environment as any)
+  fromAccountPage.YourAccountPage.forRoot(environment as any),
+  AccountDataAccessModule.forRoot(environment as any),
+  HomeDataAccessModule.forRoot(environment as any)
 ]
 
 

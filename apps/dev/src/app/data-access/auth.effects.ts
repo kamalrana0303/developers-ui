@@ -5,7 +5,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, exhaustMap, map, of, tap } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { LogoutPromptComponent } from '../logout-prompt/logout-prompt.component';
-import { bucketAction, loginAction, logoutAction, pkceAction, tokenAction } from '@developers/models';
+import { bucketAction, loginAction, logoutAction, pkceAction, tokenAction, urlPrefix } from '@developers/models';
 
 import { Code } from './app-data.model';
 import { AuthService } from './auth.service';
@@ -17,7 +17,7 @@ import { PortalBridgeService } from './portal-bridge.service';
 
 @Injectable()
 export class AuthEffects {
-
+  
   constructor(private actions$: Actions, @Inject('authService') private authService: AuthService, private router: Router, private dialogService: MatDialog, private portalBridgeService: PortalBridgeService) {}
 
   checkToken$= createEffect(()=> this.actions$.pipe(
@@ -144,7 +144,7 @@ export class AuthEffects {
       ofType(loginAction.loginStatus),
       tap((loggedinStatus)=> {
         if(loggedinStatus.loggedIn){
-          this.router.navigate(["/auth/home"])
+          this.router.navigate([`${urlPrefix['1.0']}`, `${urlPrefix['2.0']}`])
         }
       })
     )

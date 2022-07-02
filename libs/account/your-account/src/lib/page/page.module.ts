@@ -2,8 +2,11 @@ import { ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PageRoutingModule } from './page-routing.module';
 import { ConfigurationModel } from '@developers/models';
-import { DataAccessModule } from '@developers/account/data-access';
 import { PageComponent } from './page/page.component';
+import { MatTabsModule } from '@angular/material/tabs';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatIconModule } from '@angular/material/icon';
+import { AccountDataAccessModule } from '@developers/account/data-access';
 
 
 @NgModule({
@@ -12,16 +15,18 @@ import { PageComponent } from './page/page.component';
   ],
   imports: [
     CommonModule,
-    DataAccessModule,
-    PageRoutingModule
+    AccountDataAccessModule,
+    PageRoutingModule,
+    MatTabsModule,
+    FlexLayoutModule,
+    MatIconModule
   ],
- 
 })
-export class PageModule {
-  public static forRoot(config:ConfigurationModel): ModuleWithProviders<PageModule>{
+export class YourAccountPage {
+  public static forRoot(config:ConfigurationModel): ModuleWithProviders<YourAccountPage>{
     
     return {
-      ngModule: PageModule,
+      ngModule: YourAccountPage,
       providers: [{
         provide: 'config', useValue: config
       }]

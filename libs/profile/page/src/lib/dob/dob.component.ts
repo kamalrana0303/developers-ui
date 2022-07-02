@@ -8,6 +8,7 @@ import { selectProfileDOB, updateDob } from '@developers/profile/data-access';
 import { select, Store } from '@ngrx/store';
 import * as moment from 'moment';
 import {Moment} from 'moment';
+import {urlPrefix} from "@developers/models";
 import { tap } from 'rxjs';
 @Component({
   selector: 'developers-dob',
@@ -80,13 +81,13 @@ export class DobComponent implements OnInit {
   updateDOB(){
     if(this.fg.valid){
       let dob=moment(this.fg.value.date).format("YYYY-MM-DD")
-     
       this.store.dispatch(updateDob({profileId:(this.profile)?.profileId, dob: dob}))
     }
   }
 
   cancel(){
-    this.router.navigate(['/auth/home'])
+    
+    this.router.navigate([`${urlPrefix['1.0']}`,`${urlPrefix['2.0']}`])
   }
 
   onProgressShow(){

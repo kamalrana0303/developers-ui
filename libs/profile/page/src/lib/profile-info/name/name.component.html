@@ -9,35 +9,83 @@
          <!-- <div fxLayout="row" class="item">
              <developers-user-control [name]="profileName$ | async" (rename)="rename($event)"></developers-user-control>
          </div> -->
-         <mat-list dense>
+         <mat-list class="reverse-list" dense>
+             <div class="c">
+                <mat-list-item>
+                    <div fxLayout="row" fxLayoutAlign="start center" class="item">
+                       <div fxLayout="column" class="item">
+                            <h6 fxFlex class="heading">
+                                Displayname
+                            </h6>
+                            <div fxLayout="row" fxLayoutAlign="space-between" class="item">
+                               <div id="name" fxFlex="90" fxLayout="column" fxLayoutAlign="center start">
+                                  
+                                   <div *ngIf="(displayName$ | async)">{{displayName$ | async}}</div> 
+                                   <span *ngIf="!(displayName$ | async)" class="not-available">N/A</span>
+                               </div>
+                               <div fxFlex="10" fxLayoutAlign="end" fxLayout="column">
+                                   <mat-icon (click)="displayName()">{{(displayName$| async)?'edit':'add_circle_outline'}}</mat-icon>
+                               </div>
+                            </div> 
+                       </div>
+                    </div> 
+                </mat-list-item>
             
-             <mat-list-item>
-                 <div fxLayout="row" fxLayoutAlign="start center" class="item">
-                    <div fxLayout="column" class="item">
-                         <h6 fxFlex class="heading">
-                             NAME
-                         </h6>
-                         <div fxLayout="row" fxLayoutAlign="space-between" class="item">
-                            <div id="name" fxFlex="90" fxLayout="column" fxLayoutAlign="center start">
-                                <h3 >{{name$ | async}}</h3> 
-                            </div>
-                            <div fxFlex="10">
-                                <span (click)="perform()"  class="material-symbols-outlined edit">
-                                    edit
-                                </span>
-                            </div>
-                         </div> 
-                    </div>
-                 </div> 
-             </mat-list-item>
-             
+             </div>
+            <div class="b">
+                <mat-list-item>
+                    <div fxLayout="row" fxLayoutAlign="start center" class="item">
+                       <div fxLayout="column" class="item">
+                            <h6 fxFlex class="heading">
+                                Nickname
+                            </h6>
+                            <div fxLayout="row" fxLayoutAlign="space-between" class="item">
+                               <div id="name" fxFlex="90" fxLayout="column" fxLayoutAlign="center start">
+                                  
+                                   <div *ngIf="(nickName$ | async)">{{nickName$ | async}}</div> 
+                                   <span *ngIf="!(nickName$ | async)" class="not-available">N/A</span>
+                               </div>
+                               <div fxFlex="10" fxLayoutAlign="end" fxLayout="column">
+                                  
+                                   <mat-icon (click)="nickName()">{{(nickName$| async)?'edit':'add_circle_outline'}}</mat-icon>
+                               
+                               </div>
+                            </div> 
+                       </div>
+                    </div> 
+                </mat-list-item>
+                <div class="bb">
+                    <mat-divider class="bbb"></mat-divider>
+                </div>
+            </div>
+           
+            <div class="a">
+                <mat-list-item>
+                    <div fxLayout="row" fxLayoutAlign="start center" class="item">
+                       <div fxLayout="column" class="item">
+                            <h6 fxFlex class="heading">
+                                NAME
+                            </h6>
+                            <div fxLayout="row" fxLayoutAlign="space-between" class="item">
+                               <div id="name" fxFlex="90" fxLayout="column" fxLayoutAlign="center start">
+                                  
+                                   <div *ngIf="(name$ | async)">{{name$ | async}}</div> 
+                                   <span *ngIf="!(name$ | async)" class="not-available">N/A</span>
+                               </div>
+                               <div fxFlex="10" fxLayoutAlign="end" fxLayout="column">
+                                  
+                                   <mat-icon (click)="name()">{{(name$| async)?'edit':'add_circle_outline'}}</mat-icon>
+                               
+                               </div>
+                            </div> 
+                       </div>
+                    </div> 
+                </mat-list-item>
+                <div class="aa">
+                    <mat-divider class="aaa"></mat-divider>
+                </div>
+            </div>
             
-             <!-- <mat-list-item>
-                 <div fxLayout="row" fxLayoutAlign="start center" class="item">
-                     <h3 matLine>Nickname</h3>
-                     <p>{{(profile$ | async)?.nickname}}</p>
-                 </div>
-             </mat-list-item> -->
          </mat-list>
          
         </mat-card-content>

@@ -20,7 +20,7 @@ export class AccountEffect{
                         if(account.profile && account.profile.profileId){
                             this.store.dispatch(init({profileId: account.profile.profileId}))
                         }
-                        alert(JSON.stringify(account))
+                    
                         return accountAction.onSuccess({account: account})
                     }))
                 },

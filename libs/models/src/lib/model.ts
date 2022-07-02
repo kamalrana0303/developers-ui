@@ -127,3 +127,12 @@ export interface Account{
   profile: MiniProfile |null|undefined;
   address: MiniAddress |null|undefined;
 }
+
+export const urlPrefix ={
+  "1.0": "account",
+  "2.0": "personal-info",
+  "2.0.1":"name",
+  "2.0.1.1":"edit",
+  "2.0.2":"birthday",
+  "2.0.3":"gender"
+}

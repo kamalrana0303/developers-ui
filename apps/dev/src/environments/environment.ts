@@ -18,6 +18,11 @@ export const environment = {
   enableTracing: false,
   appearance: "outline",
   floatLabel: 'auto',
+  url: {
+    
+    profileBaseurl: "personal-info"
+  }
+  
 
 };
 

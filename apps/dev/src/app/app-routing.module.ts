@@ -4,17 +4,18 @@ import { MainComponent } from "./main/main.component";
 import { environment } from "../environments/environment";
 import { BucketComponent } from "./bucket/bucket.component";
 import { AuthGuardGuard } from "./guard/auth-guard.guard";
+
 export const routes:Routes=[ 
+
     {
-        path: "", component: BucketComponent
-    },
-    {
-        path:"auth",component:MainComponent,canActivate: [AuthGuardGuard] ,
-         children:[           
+        path:"account",component:MainComponent,canActivate: [AuthGuardGuard] ,
+        children:[ 
+            
+             {
+                path: "", loadChildren: ()=> import("@developers/home/page").then(m=>m.HomePageModule), pathMatch: "full"
+             },
             {
-               path:"home" ,loadChildren: ()=>import("@developers/account/your-account").then(m=> {
-                   return m.PageModule
-               })
+               path:"personal-info" ,loadChildren: ()=>import("@developers/account/your-account").then(m=> m.fromAccountPage.YourAccountPage)
             }
         ] 
     },

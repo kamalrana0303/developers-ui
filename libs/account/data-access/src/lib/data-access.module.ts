@@ -14,10 +14,10 @@ import { FEATURE_ACCOUNT, reducers } from './store/account.selector';
   ],
   providers: [AccountService],
 })
-export class DataAccessModule {
-  public static forRoot(config:ConfigurationModel): ModuleWithProviders<DataAccessModule>{
+export class AccountDataAccessModule {
+  public static forRoot(config:ConfigurationModel): ModuleWithProviders<AccountDataAccessModule>{
     return {
-      ngModule: DataAccessModule,
+      ngModule: AccountDataAccessModule,
       providers: [{
         provide: 'config', useValue: config
       }]

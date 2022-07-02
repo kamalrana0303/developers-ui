@@ -1,31 +1,120 @@
-@mixin login-theming-theme(){
+@mixin login-theming-theme() {
     $system-gray: mat-color($system-gray-pallete, 50, 50);
     $black: mat-color($black-color-pallete, 50, 100);
     $warn: mat-color($warm-red-color-pallete, 900);
-    
-    .gray-background{
+    .not-available{
+        background-color: mat-color($system-red-color-pallete, 900);
+    }
+    developers-page {
+        .uU7LXe {
+            display: block;
+        }
+       
+        .mat-tab-label .mat-tab-label-content {
+            width: 100% !important;
+            justify-content: flex-start;
+        }
+      
+        .mat-tab-label.mat-tab-label-active {
+            color: #1a73e8 !important;
+            text-decoration: none !important;
+            background: #e8f0fe !important;
+        }
+
+        .mat-tab-label.mat-tab-label-active:hover {
+            color: #1a73e8 !important;
+            text-decoration: none !important;
+            background: #e8f0fe !important;
+        }
+
+       
+
+        .mat-tab-label {
+            display: flex;
+            align-items: center;
+            border-radius: 0 50px 50px 0;
+            padding: 10px 16px 10px 24px;
+            position: relative;
+        
+        }
+
+        @media (min-width: 720px) {
+            .mat-tab-labels {
+                flex-direction: column;
+            }
+            .mat-tab-group{
+                width: 300px !important;
+            }
+            .mat-tab-header {
+                width: 300px;
+            }
+            .mat-tab-label:hover {
+                background-color: #dadce0;
+            }
+        }
+
+        @media(max-width: 720px) {
+
+            .mat-tab-labels {
+                border-radius: 0px 0px 0px 0px !important;
+                flex-direction: row;
+            }
+
+            .mat-tab-label.mat-tab-label-active {
+                border-radius: 0px 0px 0px 0px !important;
+            }
+            .mat-tab-group{
+                width: 100%;
+                background-color: #fff;
+            }
+            .mat-tab-group,.mat-tab-header {
+                width: 100%;
+            }
+
+            .mat-tab-nav-bar:active {
+                color: #1a73e8 !important;
+            }
+
+            .mat-ink-bar {
+                padding: 0.5px 0px;
+                background-color: #1a73e8 !important;
+                display: block;
+                height: 2px !important;
+                border-top-left-radius: 400px;
+                border-top-right-radius: 400px;
+            }
+        }
+    }
+
+    .gray-background {
         background-color: $warn;
     }
-    mat-card.gray{
-        mat-card.mat-card{
+
+    mat-card.gray {
+        mat-card.mat-card {
             background-color: $system-gray;
             border-radius: 0px !important;
         }
-        mat-icon.mat-icon.mat-amber{
+
+        mat-icon.mat-icon.mat-amber {
             color: mat-color($amber-color-pallete, 400)
         }
-        .bird{
-            background-color: $system-gray !important;
+
+        .bird {
+            background-color: $system-gray  !important;
         }
     }
-   
-    .material-form{
-        .mat-raised-button.mat-amber, .mat-flat-button.mat-amber{
+
+    .material-form {
+
+        .mat-raised-button.mat-amber,
+        .mat-flat-button.mat-amber {
             background-color: mat-color($amber-color-pallete, 400);
             color: #fff;
             font-weight: bolder;
             font-family: sans-serif;
         }
+
         // .mat-form-field-appearance-outline .mat-form-field-outline-thick {
         //     color: mat-color($amber-color-pallete, 200);
         // }
@@ -38,184 +127,207 @@
         //     background-color: mat-color($amber-color-pallete);
         // }
         //border
-    //     .mat-form-field-appearance-outline .mat-form-field-outline-thick {
-    //         color: mat-color($amber-color-pallete, 200);
-    // }
-        mat-form-field.mat-form-field.mat-amber{
+        //     .mat-form-field-appearance-outline .mat-form-field-outline-thick {
+        //         color: mat-color($amber-color-pallete, 200);
+        // }
+        mat-form-field.mat-form-field.mat-amber {
+
             // mat-label normal state style
             .mat-form-field-label {
                 color: mat-color($amber-color-pallete, 900);
             }
-            &.mat-form-field-appearance-outline .mat-form-field-outline-thick{
+
+            &.mat-form-field-appearance-outline .mat-form-field-outline-thick {
                 color: mat-color($amber-color-pallete, 200);
             }
-           
-            &.mat-focused{
-                .mat-form-field-outline-thick{
+
+            &.mat-focused {
+                .mat-form-field-outline-thick {
                     color: mat-color($amber-color-pallete, 100);
                     box-shadow: 0px 0px 0px 1px mat-color($amber-color-pallete, 400), 0px 0px 0px 2px mat-color($amber-color-pallete, 300), 0px 0px 0px 3px mat-color($amber-color-pallete, 200) !important;
                     border-radius: 6px;
                 }
-               
+
                 // mat-label focused style
-                .mat-form-field-label{
+                .mat-form-field-label {
                     color: mat-color($amber-color-pallete);
                 }
-                .mat-form-field-ripple{
+
+                .mat-form-field-ripple {
                     background-color: mat-color($amber-color-pallete, 900) !important;
                 }
             }
+
             // mat-input error outline color
-            &.mat-form-field-invalid{
-                .mat-form-field-outline-thick{
+            &.mat-form-field-invalid {
+                .mat-form-field-outline-thick {
                     color: mat-color($amber-color-pallete, 100);
                     border-radius: 6px;
-                    opacity: 0.8!important;
+                    opacity: 0.8 !important;
                 }
             }
 
         }
-       
+
         // mat-input carent color
         .mat-input-element {
             caret-color: mat-color($amber-color-pallete, 900);
         }
-       
-        
+
+
         // mat-input error carent color
-        .mat-form-field-invalid .mat-input-element, .mat-warn .mat-input-element {
+        .mat-form-field-invalid .mat-input-element,
+        .mat-warn .mat-input-element {
             caret-color: mat-color($warm-red-color-pallete, 800);
         }
-        
-        .mat-error{
+
+        .mat-error {
             color: $warn;
         }
     }
-    $theme-background-color: mat-color($amber-color-pallete, 50, 100);//mat-color($amber-color-pallete, 50);
+
+    $theme-background-color: mat-color($amber-color-pallete, 50, 100); //mat-color($amber-color-pallete, 50);
     $theme-h1-color: mat-color($amber-color-pallete, 200, 200);
+
     .mat-snack-bar-container {
         color: #323232;
-        background: mat-color($amber-color-pallete, 200,100);
+        background: mat-color($amber-color-pallete, 200, 100);
         box-shadow: 0px 3px 5px -1px rgb(0 0 0 / 20%), 0px 6px 10px 0px rgb(0 0 0 / 14%), 0px 1px 18px 0px rgb(0 0 0 / 12%);
     }
+
     .mat-simple-snackbar-action {
         color: #323232;
     }
-    developers-auth-page{
-        .view-box{  
-            background-color:  $theme-background-color;//mat-color($amber-color-pallete, 200, 100);
+
+    developers-auth-page {
+        .view-box {
+            background-color: $theme-background-color; //mat-color($amber-color-pallete, 200, 100);
         }
-        mat-icon.mat-icon.mat-error{
+
+        mat-icon.mat-icon.mat-error {
             color: mat-color($warm-red-color-pallete, 900)
         }
-        .description-view-box{
+
+        .description-view-box {
             background-color: #e7a33e3d;
 
         }
 
-        .heading{
-            h1{
+        .heading {
+            h1 {
                 color: $theme-h1-color;
             }
         }
     }
-    developers-login-form{
 
-        .amber-color{
+    developers-login-form {
+
+        .amber-color {
             color: mat-color($amber-color-pallete, 900)
         }
-        mat-divider.mat-divider{
+
+        mat-divider.mat-divider {
             background-color: mat-color($amber-color-pallete, 400);
         }
-        .view-box{
+
+        .view-box {
             background-color: $theme-background-color;
         }
-        
-    }
-   
-    developers-divider{
-        .view-box{
-            background-color: $theme-background-color;
-        }
-    }
-    
-    developers-signup-form{
-        .view-box{
-            background-color: $theme-background-color;
-        }
-       
+
     }
 
-    developers-name-edit, developers-dob{
-        .mat-storked-button:hover{
+    developers-divider {
+        .view-box {
+            background-color: $theme-background-color;
+        }
+    }
+
+    developers-signup-form {
+        .view-box {
+            background-color: $theme-background-color;
+        }
+
+    }
+
+    developers-name-edit,
+    developers-dob {
+        .mat-storked-button:hover {
             color: mat-color($blue-color-pallete, 700);
         }
-        .mat-stroked-button{
+
+        .mat-stroked-button {
             color: mat-color($blue-color-pallete, 900);
         }
-        .custom-error{
-            .mat-form-field-appearance-outline .mat-form-field-wrapper{
+
+        .custom-error {
+            .mat-form-field-appearance-outline .mat-form-field-wrapper {
                 margin-bottom: 0px !important;
             }
-            .mat-form-field-wrapper{
-             padding-bottom: 0px !important
+
+            .mat-form-field-wrapper {
+                padding-bottom: 0px !important
             }
         }
-        
-        mat-form-field.mat-form-field.mat-maggie{
+
+        mat-form-field.mat-form-field.mat-maggie {
             // mat-label normal state style
-            
+
             .mat-form-field-label {
                 color: mat-color($black-color-pallete, 900);
             }
-            &.mat-form-field-appearance-outline .mat-form-field-outline-thick{
+
+            &.mat-form-field-appearance-outline .mat-form-field-outline-thick {
                 color: mat-color($black-color-pallete, 900);
             }
-          
-            &.mat-focused{
+
+            &.mat-focused {
                 .mat-form-field-label {
                     color: mat-color($blue-color-pallete, 900);
                 }
-                .mat-form-field-outline-thick{
+
+                .mat-form-field-outline-thick {
                     color: mat-color($blue-color-pallete, 900);
-                   // box-shadow: 0px 0px 0px 1px mat-color($system-gray-color-pallete, 400), 0px 0px 0px 2px mat-color($system-gray-color-pallete, 300), 0px 0px 0px 3px mat-color($system-gray-color-pallete, 200) !important;
+                    // box-shadow: 0px 0px 0px 1px mat-color($system-gray-color-pallete, 400), 0px 0px 0px 2px mat-color($system-gray-color-pallete, 300), 0px 0px 0px 3px mat-color($system-gray-color-pallete, 200) !important;
                     border-radius: 6px;
                 }
-               
+
                 // mat-label focused style
-                .mat-form-field-label{
+                .mat-form-field-label {
                     color: mat-color($blue-color-pallete);
                 }
-                .mat-form-field-ripple{
+
+                .mat-form-field-ripple {
                     background-color: mat-color($blue-color-pallete, 900) !important;
                 }
             }
+
             // mat-input error outline color
-            &.mat-form-field-invalid{
-                .mat-form-field-outline-thick{
+            &.mat-form-field-invalid {
+                .mat-form-field-outline-thick {
                     color: mat-color($blue-color-pallete, 900);
                     border-radius: 6px;
-                    opacity: 0.8!important;
+                    opacity: 0.8 !important;
                 }
             }
 
         }
-       
+
         // mat-input carent color
         .mat-input-element {
             caret-color: mat-color($system-gray-color-pallete, 900);
         }
-       
-        
+
+
         // mat-input error carent color
-        .mat-form-field-invalid .mat-input-element, .mat-warn .mat-input-element {
+        .mat-form-field-invalid .mat-input-element,
+        .mat-warn .mat-input-element {
             caret-color: mat-color($warm-red-color-pallete, 800);
         }
-        
-        .mat-error{
+
+        .mat-error {
             color: $warn;
         }
     }
-    
-  
+
+
 }

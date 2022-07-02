@@ -15,26 +15,25 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-     
-      "@developers/auth/auth-page": ["libs/auth/auth-page/src/index.ts"],
-      "@developers/auth/data-access": ["libs/auth/data-access/src/index.ts"],
-      "@developers/data-access": ["libs/data-access/src/index.ts"],
-      "@developers/directives": ["libs/directives/src/index.ts"],
-      "@developers/oauth/auth-code": ["libs/oauth/auth-code/src/index.ts"],
-      "@developers/oauth/data-access": ["libs/oauth/data-access/src/index.ts"],
-     
-
       "@developers/account/data-access": [
         "libs/account/data-access/src/index.ts"
       ],
       "@developers/account/your-account": [
         "libs/account/your-account/src/index.ts"
       ],
+      "@developers/auth/auth-page": ["libs/auth/auth-page/src/index.ts"],
+      "@developers/auth/data-access": ["libs/auth/data-access/src/index.ts"],
+      "@developers/data-access": ["libs/data-access/src/index.ts"],
+      "@developers/directives": ["libs/directives/src/index.ts"],
+      "@developers/home/data-access": ["libs/home/data-access/src/index.ts"],
+      "@developers/home/page": ["libs/home/page/src/index.ts"],
       "@developers/models": ["libs/models/src/index.ts"],
-      "@developers/profile/page": ["libs/profile/page/src/index.ts"],
+      "@developers/oauth/auth-code": ["libs/oauth/auth-code/src/index.ts"],
+      "@developers/oauth/data-access": ["libs/oauth/data-access/src/index.ts"],
       "@developers/profile/data-access": [
         "libs/profile/data-access/src/index.ts"
       ],
+      "@developers/profile/page": ["libs/profile/page/src/index.ts"],
       "@developers/progress-bar": ["libs/progress-bar/src/index.ts"],
       "@developers/ui/styles": ["libs/ui/styles/src/index.ts"],
       "@developers/your-address": ["libs/your-address/src/index.ts"]

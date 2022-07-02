@@ -37,6 +37,7 @@ import {  Moment} from 'moment';
 import { GenderComponent } from './gender/gender.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { DobComponent } from '../dob/dob.component';
+import { NicknameEditComponent } from './nickname-edit/nickname-edit.component';
 
 // tslint:disable-next-line:no-duplicate-imports
 
@@ -62,7 +63,8 @@ export const MY_FORMATS = {
     UserControlComponent,
     NameEditComponent,
     DobComponent,
-    GenderComponent
+    GenderComponent,
+    NicknameEditComponent
   ],
   imports: [
     CommonModule,
