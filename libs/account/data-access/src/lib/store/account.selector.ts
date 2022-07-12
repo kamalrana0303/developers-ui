@@ -17,3 +17,4 @@ export const metaReducers : MetaReducer<State> []= environment.production?[]: []
 export const selectFeature= createFeatureSelector<State>(FEATURE_ACCOUNT);
 export const selectAccountState= createSelector(selectFeature, (state)=> state?._state);
 export const selectAccount= createSelector(selectAccountState, (state)=> state?.account);
+export const selectSelectedTabIndex = createSelector(selectAccountState, (state)=> state?.selectedTabIndex)

@@ -18,6 +18,7 @@ export class ScrollWindowDirective {
   @HostListener('window:scroll',['$event'])
   onScroll(event:any){
     var rect = this.elementRef.nativeElement.getBoundingClientRect();
+    
     console.log(rect.top)
     if(rect.top<0){
       

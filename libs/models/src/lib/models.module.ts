@@ -12,6 +12,9 @@ import { ProgressBarDirective } from './directive/progress-bar.directive';
 import {MatProgressBarModule} from "@angular/material/progress-bar";
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ProgressSnackbarDirective } from './directive/progress-snackbar.directive';
+import { CloseComponent } from './close/close.component';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 
 @NgModule({
@@ -20,7 +23,7 @@ import { ProgressSnackbarDirective } from './directive/progress-snackbar.directi
     ProgressBarComponent, 
     ProgressDirective, 
     ProgressBarDirective, 
-    ProgressSnackbarDirective
+    ProgressSnackbarDirective, CloseComponent
     
   ],
   imports: [
@@ -30,7 +33,9 @@ import { ProgressSnackbarDirective } from './directive/progress-snackbar.directi
     A11yModule, 
     OverlayModule, 
     MatProgressBarModule, 
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatIconModule,
+    MatTooltipModule
   ],
   providers: [],
   exports: [
@@ -39,7 +44,8 @@ import { ProgressSnackbarDirective } from './directive/progress-snackbar.directi
     SpinnerComponent,
     ProgressDirective, 
     ProgressBarDirective, 
-    ProgressSnackbarDirective
+    ProgressSnackbarDirective,
+    CloseComponent
   ]
 })
 export class ModelsModule {}

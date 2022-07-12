@@ -8,11 +8,12 @@ const routes: Routes = [
   
   {
     path: "", component: PageComponent, children: [
-      // {
-      //   path:"", loadChildren: ()=> import("), pathMatch:'full'
-      // },
+      
       {
-        path: "", loadChildren: ()=> import("@developers/profile/page").then(m=>m.ProfilePageModule)
+        path:"", loadChildren: ()=> import("@developers/home/page").then(m=>m.HomePageModule)
+      },
+      {
+        path: "personal-info", loadChildren: ()=> import("@developers/profile/page").then(m=>m.ProfilePageModule)
       }
     ]
   }

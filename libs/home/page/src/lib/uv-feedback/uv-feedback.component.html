@@ -1,0 +1,68 @@
+<div #uvFeedbackRoot id="uvFeedbackRoot" class="whiteBg">
+    <div class="header" fxLayout="row" fxLayoutAlign="space-between center">
+        <h3> Send feedback</h3>
+        <button mat-mini-fab color="gray" (click)="close()">
+            <close></close>
+        </button>
+    </div>
+    <div fxLayout="column" fxLayoutAlign="space-between" style="height: 90%">
+        <div>
+            <div class="uvFeedbackFormform-wrapper">
+                <form [formGroup]="fg" fxLayout="column" fxLayoutAlign="start start">
+                    <div fxLayout="column" fxLayoutAlign="start start" class="row">
+                        <label class="scSharedMaterialtextfieldlabel">Describe your issue or suggestion</label>
+                        <div class="scSharedMaterialtextfieldinput-container scSharedMaterialtextfieldmultiline scSharedMaterialtextfieldoutlined"
+                            style="width: 100%">
+                            <div id="a" class="scSharedMaterialtextfieldbox">
+                                <textarea class="scSharedMaterialtextfieldnative-control" style="padding: 0px 15px 15px"
+                                    formControlName="description" placeholder="Tell us how can we improve our product">
+    
+                               </textarea>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div fxLayout="column" fxLayoutAlign="center center" style="padding: 0px 12px">
+                <div fxLayout="row" fxLayoutAlign="center center" style="width: 100%">
+                    <button class="scSharedMaterialiconroot" [ngClass]="ssSelected? 'hide':'visible'" mat-stroked-button id="capture" (click)="startCaptureSS()"
+                        fxFlex="100">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="18" viewBox="0 0 24 24" width="18">
+                            <path
+                                d="M5 10H6.5V7.5H9V6H5ZM15 16H19V12H17.5V14.5H15ZM8 21V19H4Q3.175 19 2.588 18.413Q2 17.825 2 17V5Q2 4.175 2.588 3.587Q3.175 3 4 3H20Q20.825 3 21.413 3.587Q22 4.175 22 5V17Q22 17.825 21.413 18.413Q20.825 19 20 19H16V21ZM4 17H20Q20 17 20 17Q20 17 20 17V5Q20 5 20 5Q20 5 20 5H4Q4 5 4 5Q4 5 4 5V17Q4 17 4 17Q4 17 4 17ZM4 17Q4 17 4 17Q4 17 4 17V5Q4 5 4 5Q4 5 4 5Q4 5 4 5Q4 5 4 5V17Q4 17 4 17Q4 17 4 17Z">
+                            </path>
+                        </svg>
+                        <span>Capture Screenshot</span>
+                    </button>
+                </div>
+                <div id="uv-feedback-form-screenshot-preview-wrapper" [ngStyle]="{'border': ssSelected?'1px solid #757575;':'none;'}">
+                    <div class="absolute" [ngClass]="ssSelected? 'visible':'hide'" >
+                        <button mat-fab (click)="delete()">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" fill="#041E49"><path d="M7 21q-.825 0-1.412-.587Q5 19.825 5 19V6H4V4h5V3h6v1h5v2h-1v13q0 .825-.587 1.413Q17.825 21 17 21ZM17 6H7v13h10ZM9 17h2V8H9Zm4 0h2V8h-2ZM7 6v13Z"></path></svg>
+                        </button>
+                    </div>
+                    <div [ngClass]="ssSelected? 'visible':'hide'">
+                        <div class="uv-feedback-highlight"  fxLayout="row" fxLayoutAlign="center center">
+                            <button mat-stroked-button fxFlex="70"  (click)="highLightOrHideInfo()">
+                                <mat-icon>edit</mat-icon>
+                                <span class="highlight" > Highlight or Hide Info</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="uvFeedbackFormscreenshot-utility-wrapper"></div>
+                </div>
+            </div>
+        </div>
+        <div></div>
+        <div>
+            <div class="info">
+                Some account and system information may be sent to Google. We will use it to fix problems and improve our services, subject to our Privacy Policy and Terms of Service. We may email you for more information or updates. Go to Legal Help to ask for content changes for legal reasons.
+            </div>
+            <div class="footer">
+                <div fxLayout="row" fxLayoutAlign="end center" style="width: 100%; padding: 0px 16px;">
+                    <button mat-stroked-button>Send</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,6 +1,6 @@
 <div class="fixed">
-    <mat-tab-group  fxLayout="column">
-        <mat-tab fxFlex>
+    <mat-tab-group  fxLayout="column" [(selectedIndex)]="selectedTabIndex" (selectedTabChange)="onChange($event)">
+        <mat-tab fxFlex label="HOME" >
             <ng-template mat-tab-label>
                 <div class="tab">
                     <div class="item-icon">
@@ -14,7 +14,7 @@
             </ng-template>
         </mat-tab>
         
-        <mat-tab fxFlex (click)="personalInfo()">
+        <mat-tab fxFlex label="PERSONAL_INFO">
             <ng-template mat-tab-label>
                 <div class="tab">
                     <div class="item-icon">
@@ -28,6 +28,7 @@
             </ng-template>
         </mat-tab>
     </mat-tab-group>
+    
 </div>
 <div class="container">
     <router-outlet></router-outlet> 

@@ -19,7 +19,8 @@ import { AccountDataAccessModule } from '@developers/account/data-access';
     PageRoutingModule,
     MatTabsModule,
     FlexLayoutModule,
-    MatIconModule
+    MatIconModule,
+    
   ],
 })
 export class YourAccountPage {
@@ -29,7 +30,8 @@ export class YourAccountPage {
       ngModule: YourAccountPage,
       providers: [{
         provide: 'config', useValue: config
-      }]
+      }],
+    
     }
   }
  }

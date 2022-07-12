@@ -1,0 +1,124 @@
+:host{
+     display: flex;
+     justify-content: space-around;
+}
+h2{
+    display: block;
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+    padding: 0px;
+    margin: 0px;
+}
+
+@media (max-width: 1024px){
+    .screen-0{
+        width: 95%;
+        margin-right: 0px !important;
+    }
+    .screen-1{
+        display: none;
+    } 
+    
+}
+@media (min-width: 1024px) {
+    .screen-0{
+        width: 70%;
+    }
+    .screen-1{
+        width: 30%;
+    }
+}
+.screen-0-1-0{
+    margin-right: 0px !important;
+}
+.screen-0-1-1{
+    margin-right: calc((100% - 100px)/2);
+}
+
+@media (min-width: 1020px){
+    .lpUfW {
+        top: 70px;
+        display: block;
+        right: 0px;
+        border-left: 1px solid #dadce0;
+        bottom: 0px;
+        box-sizing: border-box;
+        max-width: 480px;
+        position: fixed;
+        transition: right 0.25s;
+    }
+    .screen-0-1{
+        margin-right: calc((100% - 100px)/2) ;
+    }
+   
+}
+@media(max-width: 1020px){
+    .lpUfW{
+        display: none;
+    }
+    .screen-0-1{
+        margin-right: 0px;
+    }
+}
+.Ig9emd {
+    overflow: hidden;
+    height: 100%;
+    background-color: #f8f9fa;
+}
+
+
+.none{
+    display: none;
+    border-left: 1px solid #dadce0;
+    bottom: 0;
+    box-sizing: border-box;
+    display: none;
+    max-width: 452px;
+    position: fixed;
+    right: -452px;
+    top: 0;
+    transition: right 0.25s;
+    width: calc((100% - 280px)/2);
+}
+
+// @media (min-width: 1024px){
+//     .s7iwrf.POdh1 {
+//         margin-right: calc((100% - 280px)/2);
+//     }
+// }
+
+// @media (min-width: 1024px){
+//     .s7iwrf.Kdcijb {
+//         margin-left: 280px;
+//     }
+// }
+
+:host{
+    display: flex;
+    flex-direction: row;
+}
+.container-0{
+    margin-top: 20px;
+}
+.container-1{
+    width: 100%;
+}
+.email-logo{
+    border-radius: 50%;
+    background-color: #dedede;
+    box-sizing: border-box;
+    padding:5px 20px;
+    font-size: larger;
+    line-height: 40px;
+    width: fit-content;
+}
+.welcome::before{
+    content: "Welcome, ";
+    
+}
+.welcome{
+    text-align: center;
+}

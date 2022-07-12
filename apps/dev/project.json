@@ -23,6 +23,16 @@
             "output": "assets"
           },
           {
+            "input":"libs/models/src/lib/assets",
+            "glob":"**.*",
+            "output":"assets"
+          },
+          {
+            "input":"libs/home/page/src/lib/assets",
+            "glob":"**.*",
+            "output":"assets"
+          },
+          {
             "input": "libs/profile/page/src/lib/assets",
             "glob": "**.*",
             "output": "assets"

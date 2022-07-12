@@ -1,0 +1,11 @@
+<div class="cJcN5b" [class.bg-color-white] = "isScrolled">
+    <h2 class="Hm9Gzf">Help</h2>
+    <div class="HufyW">
+        <button  mat-mini-fab color="gray" (click)="close()" >
+            <close></close>
+        </button>
+    </div> 
+</div>
+<div class="jQD8Le" id="content" developersChangeBGCOnScroll (isScroll)="scroll($event)" >
+   <developers-help-menu></developers-help-menu>
+</div> 

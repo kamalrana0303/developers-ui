@@ -1,0 +1,22 @@
+<div class="screen-0 screen-0-1" [ngClass]="open? 'screen-0-1-1':'screen-0-1-0'">
+    <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="20px" >
+        <div class="container-0" >
+            <div fxLayout="row" fxLayoutAlign="center center">
+                <div class="email-logo">
+                    {{(account$| async)?.email  | initialCase}}
+                </div>
+            </div>
+            <h1 class="welcome"  *ngIf="firstName$ | async">
+                {{(firstName$) | async}} {{(lastName$) | async}}
+            </h1>
+        </div>
+        <div class="container-1">
+            <developers-looking-for-something-else (help)="help($event)"></developers-looking-for-something-else>
+        </div>
+    </div>
+</div>
+<div class="screen-1" [ngClass]="open?'lpUfW' :'none'" >
+    <aside class="Ig9emd">
+        <developers-help-wiz (help)="help($event)"></developers-help-wiz>   
+    </aside>
+</div>

@@ -131,6 +131,7 @@ export class AuthEffects {
   })
 
   loginSuccess$= createEffect(()=> {
+    
     return this.actions$.pipe(
       ofType(loginAction.loginSuccess),
       exhaustMap(()=> {
@@ -144,7 +145,7 @@ export class AuthEffects {
       ofType(loginAction.loginStatus),
       tap((loggedinStatus)=> {
         if(loggedinStatus.loggedIn){
-          this.router.navigate([`${urlPrefix['1.0']}`, `${urlPrefix['2.0']}`])
+          this.router.navigate([`${urlPrefix['1.0']}`])
         }
       })
     )
@@ -154,8 +155,7 @@ export class AuthEffects {
     return this.actions$.pipe(
       ofType(logoutAction.loggedOutConfirmed),
       tap(()=> {
-        
-        this.router.navigate([""])
+        this.router.navigate([""]);
       })
     )
   }, {dispatch:false})

@@ -23,12 +23,12 @@ export class ProfileInfoComponent implements OnInit {
     
   }
   name(){
-    this.router.navigate([`${urlPrefix['2.0']}/${urlPrefix['2.0.1']}`], {queryParams: {'continue': this.continue }});
+    this.router.navigate([`${urlPrefix['1.0']}`,`${urlPrefix['2.0']}`,`${urlPrefix['2.0.1']}`], {queryParams: {'continue': this.continue }});
   }
   dob(){
-    this.router.navigate([`${urlPrefix['2.0']}/${urlPrefix['2.0.2']}`], {queryParams: {'continue': this.continue}});
+    this.router.navigate([`${urlPrefix['1.0']}`,`${urlPrefix['2.0']}`,`${urlPrefix['2.0.2']}`], {queryParams: {'continue': this.continue}});
   }
   gender(){
-    this.router.navigate([`${urlPrefix['2.0']}/${urlPrefix['2.0.3']}`], {queryParams: {'continue': this.continue}});
+    this.router.navigate([`${urlPrefix['1.0']}`,`${urlPrefix['2.0']}`,`${urlPrefix['2.0.3']}`], {queryParams: {'continue': this.continue}});
   }
 }

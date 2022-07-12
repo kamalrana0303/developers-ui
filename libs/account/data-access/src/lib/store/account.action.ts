@@ -13,3 +13,8 @@ export const onSuccess = createAction(
     '[Account] Successfully Loaded',
     props<{account:Account}>()
 )
+
+export const changeSelectedTabIndex = createAction(
+    '[Account Tab] Change Index',
+    props<{selectedTabIndex:number}>()
+)

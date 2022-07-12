@@ -1,0 +1,51 @@
+<div role="dialog" dir="ltr" arial-mode="true">
+    <div class="uvFeedbackHighlightdialogroot">
+        <h1 class="uvFeedbackHighlightdialogtitle-bar">
+            <div class="uvFeedbackHighlightdialogtitle">
+                Highlight or Hide info on your screenshot
+            </div>
+            <div class="scSharedMaterialiconroot scSharedMaterialiconbaseline">
+                <button mat-mini-fab color="gray" (click)="close()">
+                    <close></close>
+                </button>
+            </div>
+        </h1>
+        <div class="uvFeedbackHighlightdialogannotation-wrapper">
+            <img id="uvFeedbackHighlightdialogannotation-preview-id" class="uvFeedbackHighlightdialogannotation-preview" [src]="imgUrl">
+            <canvas id="uvFeedbackHighlightdialogannotation-canvas-id" class="uvFeedbackHighlightdialogannotation-canvas" width="1440" height="900"></canvas>
+            <div class="uvFeedbackHighlightdialogannotation-close-icon" style="width: 1440px; height: 900px">
+                <div class="uvFeedbackHighlightdialogclose-icon-canvas">
+                    <mat-icon>close</mat-icon>
+                </div>
+            </div>
+        </div>
+
+        <div class="uvFeedbackHighlightdialogactions">
+            <div class="uvFeedbackHighlightdialogleft-actions">
+                <button mat-stroked-button class="scSharedMaterialbuttonroot">
+                    <span class="scSharedMaterialButtonicon">
+                        <mat-icon svgIcon="highlight"></mat-icon>
+                    </span>
+                    <span>Highlight</span>
+                </button>
+                <button mat-stroked-button class="scSharedMaterialbuttonroot">
+                    <span class="scSharedMaterialbuttonicon">
+                        <mat-icon svgIcon="hide"></mat-icon>
+                    </span>  
+                    <span>Hide</span>
+                </button>
+            </div>
+            <div class="uvFeedbackHighlightdialoghighlight-button">
+                <button mat-stroked-button class="scSharedMaterialbuttonroot">
+                    <span>Cancel</span>
+                </button>
+                <button mat-stroked-button class="scSharedMaterialbuttonroot">
+                    <span>Done</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+

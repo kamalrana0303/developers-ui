@@ -5,6 +5,30 @@
     .not-available{
         background-color: mat-color($system-red-color-pallete, 900);
     }
+    uv-feedback-highlight-dialog{
+        .mat-icon svg{
+            width: 18px !important;
+            height: 18px !important;
+            vertical-align: baseline !important;
+        }
+    }
+    developers-uv-feedback{
+        .mat-fab .mat-button-wrapper{
+            display: inline !important;
+        }
+        .hide{
+            .cdk-overlay-container{
+                visibility: hidden;
+            }
+        }
+        .visible{
+            .cdk-overlay-container{
+                visibility: visible;
+            }
+        }
+        
+    }
+   
     developers-page {
         .uU7LXe {
             display: block;
@@ -104,6 +128,9 @@
             background-color: $system-gray  !important;
         }
     }
+
+    
+    
 
     .material-form {
 

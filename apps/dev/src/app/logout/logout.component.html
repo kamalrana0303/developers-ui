@@ -29,9 +29,8 @@
         <mat-nav-list dense style="width: 100%">
             <mat-divider></mat-divider>
             <div fxLayout="row" fxLayoutAlign="start center">
-                <mat-list-item >
-                    <a routerLink="/auth/profile">Manage your Account</a>
-                    
+                <mat-list-item (click)="manageYourAccount()" >
+                    Manage your Account
                 </mat-list-item>
             </div>
             

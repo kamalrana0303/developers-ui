@@ -2,10 +2,12 @@ import { FocusMonitor } from '@angular/cdk/a11y';
 import { CdkConnectedOverlay } from '@angular/cdk/overlay';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MatButton } from '@angular/material/button';
+import { Router } from '@angular/router';
 import { accountSelector } from '@developers/account/data-access';
-import { logoutAction } from '@developers/models';
+import { logoutAction, urlPrefix } from '@developers/models';
 import { selectProfile } from '@developers/profile/data-access';
 import { select, Store } from '@ngrx/store';
+import { changeSelectedTabIndex } from 'libs/account/data-access/src/lib/store/account.action';
 import { filter, mapTo, merge, tap } from 'rxjs';
 
 @Component({
@@ -25,7 +27,7 @@ export class LogoutComponent implements OnInit {
   isPanelHidden$:any;
   $showPanel:any;
 
-  constructor(private store: Store, private fM: FocusMonitor) { 
+  constructor(private store: Store, private fM: FocusMonitor, private router: Router) { 
     
   }
 
@@ -40,6 +42,11 @@ export class LogoutComponent implements OnInit {
 
   attemptToLogout(){
     this.store.dispatch(logoutAction.loggedOut())
+  }
+
+  manageYourAccount(){
+    this.store.dispatch(changeSelectedTabIndex({selectedTabIndex: 0}))
+    this.router.navigate([urlPrefix['1.0']])
   }
 
 }
