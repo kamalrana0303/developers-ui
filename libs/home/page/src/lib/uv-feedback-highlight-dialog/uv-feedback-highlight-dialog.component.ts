@@ -1,8 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { DomSanitizer } from '@angular/platform-browser';
 import { HighlightImage } from '../uv-feedback/highlight-img';
-import { ImageEditor } from '../uv-feedback/screen-editor';
 
 @Component({
   selector: 'uv-feedback-highlight-dialog',
@@ -36,11 +35,15 @@ export class UvFeedbackHighlightDialogComponent implements OnInit {
   }
 
   ngAfterViewInit(){
-    this.highLight = new HighlightImage();
-    this.highLight.init();
+   this.highLight = new HighlightImage();
+   this.highLight.destroy();
+   this.highLight.init();
   }
 
   close(){
+    if(this.highLight != null){
+      this.highLight.destroy();
+    }
     this.closed$.emit()
   }
 
