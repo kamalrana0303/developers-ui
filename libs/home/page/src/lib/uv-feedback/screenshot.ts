@@ -7,7 +7,14 @@ declare class ImageCapture {
   readonly track: MediaStreamTrack;
 }
 
-export async function startCapture(){
+export class ScreenShot{
+  static imgUrl:any;
+  static capture():Promise<boolean>{
+    return startCapture()
+  }
+}
+
+export async function startCapture():Promise<boolean>{
   const displayMediaOptions:any = {
     video: {
       mediaSource: 'screen'
@@ -32,7 +39,7 @@ export async function startCapture(){
     const canvas:any = document.createElement('canvas');
     canvas.width = bitMap.width;
     canvas.height= bitMap.height;
-    
+  
     const context = canvas.getContext('2d')
     let hRatio = canvas.width / img.width;
     let vRatio = canvas.height / img.height;
@@ -44,8 +51,8 @@ export async function startCapture(){
     canvas.toBlob( async function(blob: any){
       url = URL.createObjectURL(blob);
       img.setAttribute('src', url);
-      screenshot?.appendChild(img)
-      
+      screenshot?.appendChild(img);
+      ScreenShot.imgUrl = url;
     })
     return true;
 }
@@ -54,6 +61,7 @@ export async function startCapture(){
   }
 
 }
+
 
 function DownloadCanvasAsImage(){
   let downloadLink = document.createElement('a');

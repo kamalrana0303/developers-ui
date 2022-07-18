@@ -8,7 +8,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { Store } from '@ngrx/store';
 import { ScreenShotService } from '../screenshot.service';
 import { UvFeedbackHighlightDialogComponent } from '../uv-feedback-highlight-dialog/uv-feedback-highlight-dialog.component';
-import { startCapture } from './screenshot';
+import { ScreenShot, startCapture } from './screenshot';
 
 @Component({
   selector: 'developers-uv-feedback',
@@ -52,9 +52,8 @@ export class UvFeedbackComponent implements OnInit {
     for(let i=0; i< cdk.length; i++){
       (cdk[i] as any).style.visibility = 'hidden'
     }
-    startCapture().then(isSelected => {
-      this.ssSelected = isSelected ;
-      this.ss = isSelected;
+    ScreenShot.capture().then(isSelected => {
+      this.ssSelected = isSelected
       for(let i=0; i< cdk.length; i++){
         (cdk[i] as any).style.visibility = 'visible'
       }
@@ -78,10 +77,9 @@ export class UvFeedbackComponent implements OnInit {
   }
 
   async highLightOrHideInfo(){
-    const blobUrl:any = document.getElementById("uv-screenshot")?.getAttribute("src")
-    const blob = await fetch(blobUrl).then(r=>r.blob())
+    const blob = await fetch(ScreenShot.imgUrl).then(r=>r.blob())
     const dataUrl:string = await new Promise(r=> {let a = new FileReader(); a.onload = r; a.readAsDataURL(blob)}).then((e:any)=>e.target.result)
-    
+   
     const overlayRef = this.overlay.create({
       hasBackdrop:true,
       positionStrategy: this.positionBuilder.global().centerVertically().centerHorizontally(),

@@ -116,6 +116,11 @@
     position: relative;
     -webkit-transition: color .01s;
     transition: color .01s;
+    margin-right: 8px;
+}
+.cdk-focused{
+    outline: 1px solid #0b57d0;
+
 }
 .scSharedMaterialiconroot {
     display: inline-block;

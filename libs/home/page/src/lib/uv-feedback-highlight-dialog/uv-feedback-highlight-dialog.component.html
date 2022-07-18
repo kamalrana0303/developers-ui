@@ -11,35 +11,35 @@
             </div>
         </h1>
         <div class="uvFeedbackHighlightdialogannotation-wrapper">
-            <img id="uvFeedbackHighlightdialogannotation-preview-id" class="uvFeedbackHighlightdialogannotation-preview" [src]="imgUrl">
+            <img  id="uvFeedbackHighlightdialogannotation-preview-id" class="uvFeedbackHighlightdialogannotation-preview" [src]="imgUrl">
             <canvas id="uvFeedbackHighlightdialogannotation-canvas-id" class="uvFeedbackHighlightdialogannotation-canvas" width="1440" height="900"></canvas>
             <div id="uvFeedbackHighlightdialogannotation-close-icon-id" class="uvFeedbackHighlightdialogannotation-close-icon" style="width: 1440px; height: 900px">
-                <div id="uvFeedbackHighlightdialogclose-icon-canvas-id" class="uvFeedbackHighlightdialogclose-icon-canvas">
+                <!-- <div id="uvFeedbackHighlightdialogclose-icon-canvas-id" class="uvFeedbackHighlightdialogclose-icon-canvas">
                     <img src="../assets/close.svg" height="24px" width="24px">
-                </div>
+                </div> -->
             </div>
         </div>
 
         <div class="uvFeedbackHighlightdialogactions">
-            <div class="uvFeedbackHighlightdialogleft-actions">
-                <button mat-stroked-button class="scSharedMaterialbuttonroot">
+            <div class="uvFeedbackHighlightdialogleft-actions" cdkFocusRegionStart>
+                <button #highlightButton mat-stroked-button cdkFocusInitial class="scSharedMaterialbuttonroot" (click)="highlightImage()">
                     <span class="scSharedMaterialButtonicon">
                         <mat-icon svgIcon="highlight"></mat-icon>
                     </span>
                     <span>Highlight</span>
                 </button>
-                <button mat-stroked-button class="scSharedMaterialbuttonroot">
+                <button #hideButton mat-stroked-button class="scSharedMaterialbuttonroot" (click)="hideImage()">
                     <span class="scSharedMaterialbuttonicon">
                         <mat-icon svgIcon="hide"></mat-icon>
                     </span>  
                     <span>Hide</span>
                 </button>
             </div>
-            <div class="uvFeedbackHighlightdialoghighlight-button">
-                <button mat-stroked-button class="scSharedMaterialbuttonroot">
+            <div class="uvFeedbackHighlightdialoghighlight-button" cdkFocusRegionEnd>
+                <button #cancelButton mat-stroked-button class="scSharedMaterialbuttonroot" (click)="close()">
                     <span>Cancel</span>
                 </button>
-                <button mat-stroked-button class="scSharedMaterialbuttonroot">
+                <button #doneButton mat-stroked-button class="scSharedMaterialbuttonroot" (click)="updateImage()">
                     <span>Done</span>
                 </button>
             </div>
