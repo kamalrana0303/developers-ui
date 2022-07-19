@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './header/header.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -38,7 +38,10 @@ import { ModelsModule } from '@developers/models';
 import {fromAccountPage} from '@developers/account/your-account';
 import { AccountDataAccessModule } from '@developers/account/data-access';
 import { HomeDataAccessModule } from '@developers/home/data-access';
-
+import {AngularFireModule } from '@angular/fire/compat'
+import {initializeApp, provideFirebaseApp} from '@angular/fire/app';
+import {provideAuth,getAuth} from '@angular/fire/auth';
+import { provideStorage,getStorage } from '@angular/fire/storage';
 const libConfigModule=[
   ProfilePageModule.forRoot(environment as any),
   ProfileDataAccessModule.forRoot(environment as any),
@@ -89,8 +92,11 @@ const material: any[]=[
     ModelsModule,
     OverlayModule,
     A11yModule,
+    provideFirebaseApp(()=> initializeApp(environment.firebaseConfig)),
+    provideAuth(()=>getAuth()),
     material,
     libConfigModule,
+    provideStorage(() => getStorage()),
   ],
   
   bootstrap: [AppComponent],

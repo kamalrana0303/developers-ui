@@ -1,4 +1,3 @@
-import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { MatButton } from '@angular/material/button';
 import { MatIconRegistry } from '@angular/material/icon';
@@ -53,9 +52,6 @@ export class UvFeedbackHighlightDialogComponent implements OnInit {
 
 
   close(){
-    if(this.highLight != null){
-     // HighlightImage.destroy();
-    }
     this.closed$.emit()
   }
   updateImage(){

@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "developer-app-87415": {
+      "hosting": {
+        "dev": [
+          "developer-app-87415"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "developer-app-87415"
+  }
+}

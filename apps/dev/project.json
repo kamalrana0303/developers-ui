@@ -6,7 +6,9 @@
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/apps/dev",
         "index": "apps/dev/src/index.html",
@@ -23,14 +25,14 @@
             "output": "assets"
           },
           {
-            "input":"libs/models/src/lib/assets",
-            "glob":"**.*",
-            "output":"assets"
+            "input": "libs/models/src/lib/assets",
+            "glob": "**.*",
+            "output": "assets"
           },
           {
-            "input":"libs/home/page/src/lib/assets",
-            "glob":"**.*",
-            "output":"assets"
+            "input": "libs/home/page/src/lib/assets",
+            "glob": "**.*",
+            "output": "assets"
           },
           {
             "input": "libs/profile/page/src/lib/assets",
@@ -43,7 +45,9 @@
           "apps/dev/src/styles.scss"
         ],
         "stylePreprocessorOptions": {
-          "includePaths": ["libs/ui/styles/src/lib/styles"]
+          "includePaths": [
+            "libs/ui/styles/src/lib/styles"
+          ]
         },
         "scripts": []
       },
@@ -101,15 +105,30 @@
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
-        "lintFilePatterns": ["apps/dev/src/**/*.ts", "apps/dev/src/**/*.html"]
+        "lintFilePatterns": [
+          "apps/dev/src/**/*.ts",
+          "apps/dev/src/**/*.html"
+        ]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/dev"],
+      "outputs": [
+        "coverage/apps/dev"
+      ],
       "options": {
         "jestConfig": "apps/dev/jest.config.js",
         "passWithNoTests": true
+      }
+    },
+    "deploy": {
+      "executor": "@angular/fire:deploy",
+      "options": {
+        "prerender": false,
+        "ssr": false,
+        "browserTarget": "dev:build:production",
+        "firebaseProject": "developer-app-87415",
+        "firebaseHostingSite": "developer-app-87415"
       }
     }
   },
